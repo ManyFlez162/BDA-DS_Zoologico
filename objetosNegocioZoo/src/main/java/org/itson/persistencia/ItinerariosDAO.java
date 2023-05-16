@@ -4,6 +4,8 @@
  */
 package org.itson.persistencia;
 
+import org.itson.interfaces.I_ItinerariosDAO;
+
 /**
  *
  * @author Manu
