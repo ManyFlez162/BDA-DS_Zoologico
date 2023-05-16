@@ -15,22 +15,18 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  */
 public class ConexionMongoDB {
     
-    private final String NOMBRE_BASE_DATOS = "animales";
+    private final String BASE_DATOS = "animales";
     
-    private MongoDatabase baseDatos;
-    
-    public MongoDatabase getBaseDatos(){
-        if(baseDatos == null){
-             CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+    public MongoDatabase getBaseDatos(/* También se podría hacer con parámetro*/){
+        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        
         MongoClientSettings settings = MongoClientSettings.builder()
-            .codecRegistry(pojoCodecRegistry)
-            .build();
+                .codecRegistry(pojoCodecRegistry)
+                .build();
+        
         MongoClient conexion = MongoClients.create(settings);
-         baseDatos = conexion.getDatabase(NOMBRE_BASE_DATOS);
-        }
-       
+        
+        MongoDatabase baseDatos = conexion.getDatabase(BASE_DATOS);
         return baseDatos;
     }
 }

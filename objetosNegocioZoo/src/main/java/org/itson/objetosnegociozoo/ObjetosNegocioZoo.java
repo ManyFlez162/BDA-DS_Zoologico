@@ -62,7 +62,7 @@ public class ObjetosNegocioZoo {
         itinerario.setLongitud((habitat.getDistancia()+habitat2.getDistancia()));
         itinerario.setHabitats(habitats);
         itinerario.setCantidadPersonas(20);
-        // itinerariosDAO.agregarItinerario(itinerario);
+        itinerariosDAO.agregarItinerario(itinerario);
         
         System.out.println(itinerario);
         
