@@ -4,9 +4,9 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.itson.dominio.Itinerario;
 import org.itson.interfaces.I_ItinerariosDAO;
 import org.bson.conversions.Bson;
@@ -36,18 +36,19 @@ public class ItinerariosDAO implements I_ItinerariosDAO{
     @Override
     public Itinerario modificarItinerario(String nombreItinerario, Itinerario itinerarioModificado) {
         MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
+
         Bson filtro = Filters.eq("nombre", nombreItinerario);
-        Bson actualizacion = Updates.combine(
-            Updates.set("nombre", itinerarioModificado.getNombre()),
-            Updates.set("horarios", itinerarioModificado.getHorarios()),
-            Updates.set("duracion", itinerarioModificado.getDuracion()),
-            Updates.set("longitud", itinerarioModificado.getLongitud()),
-            Updates.set("habitats", itinerarioModificado.getHabitats())    
-        );
-        
-        coleccion.updateOne(filtro, actualizacion);
+
+        Bson update = new Document("$set", 
+                new Document("horarios", itinerarioModificado.getHorarios())
+                            .append("duracion", itinerarioModificado.getDuracion())
+                            .append("longitud", itinerarioModificado.getLongitud())
+                            .append("habitats", itinerarioModificado.getHabitats()));
+
+        coleccion.updateOne(filtro, update);
         return itinerarioModificado;
     }
+
 
     @Override
     public Itinerario buscarItinerario(String nombreItinerario) {
