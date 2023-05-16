@@ -8,7 +8,7 @@ import org.itson.dominio.Itinerario;
 
 /**
  *
- * @author Manu
+ * @author Cristian Eduardo Arreola Valenzuela 233140, Jorge Eduardo Elias Cazarez 187134, Manuel Francisco Flores Velazquez 233301, Alejandro Gil Aguilar 228773
  */
 public interface I_ItinerariosDAO {
     public void agregarItinerario(Itinerario itinerario);
@@ -19,5 +19,5 @@ public interface I_ItinerariosDAO {
 
     public Itinerario itinerarioPaginado();
 
-    public void sexo();
+
 }

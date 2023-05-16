@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
-
 package org.itson.objetosnegociozoo;
+import org.itson.persistencia.ConexionMongoDB;
 
 /**
  *
@@ -12,6 +8,6 @@ package org.itson.objetosnegociozoo;
 public class ObjetosNegocioZoo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+           ConexionMongoDB conexion = new ConexionMongoDB();
     }
 }

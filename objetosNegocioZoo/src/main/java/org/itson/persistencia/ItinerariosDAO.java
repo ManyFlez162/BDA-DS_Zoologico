@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.persistencia;
 
 import com.mongodb.MongoClient;
@@ -22,6 +18,7 @@ public class ItinerariosDAO implements I_ItinerariosDAO{
     private MongoCollection<Document> collection;
 
     public ItinerariosDAO() {
+        
         this.mongoClient = new MongoClient("localhost", 27017);
         this.database = mongoClient.getDatabase("mydb");
         this.collection = database.getCollection("itinerarios");
@@ -32,7 +29,7 @@ public class ItinerariosDAO implements I_ItinerariosDAO{
         Document docItinerario = new Document("nombre", itinerario.getNombre())
             .append("horario", new Document("dia", itinerario.getHorarios().getDia()))
                 .append("horaInicio", itinerario.getHorarios().getHoraInicio())
-                .append("horaFin", itinerario.getHorarios().getHoraFin()))
+                .append("horaFin", itinerario.getHorarios().getHoraFin())
             .append("duracion", itinerario.getDuracion())
             .append("longitud", itinerario.getLongitud())
             .append("habitats", itinerario.getHabitats());
@@ -52,6 +49,18 @@ public class ItinerariosDAO implements I_ItinerariosDAO{
             .append("habitats", itinerarioModificado.getHabitats()));
 
         collection.updateOne(filter, update);
+    }
+
+    @Override
+    public Itinerario buscarItinerario(String nombreItinerario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarItinerario'");
+    }
+
+    @Override
+    public Itinerario itinerarioPaginado() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'itinerarioPaginado'");
     }
     
 }
