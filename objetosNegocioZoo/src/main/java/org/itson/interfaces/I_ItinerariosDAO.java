@@ -18,4 +18,6 @@ public interface I_ItinerariosDAO {
     public Itinerario buscarItinerario(String nombreItinerario);
 
     public Itinerario itinerarioPaginado();
+
+    public void sexo();
 }
