@@ -1,14 +1,15 @@
 package org.itson.persistencia;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import java.util.ArrayList;
 import java.util.List;
-import org.bson.Document;
-import org.itson.dominio.Habitat;
-import org.itson.dominio.Horario;
 import org.itson.dominio.Itinerario;
 import org.itson.interfaces.I_ItinerariosDAO;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -17,62 +18,54 @@ import org.itson.interfaces.I_ItinerariosDAO;
 public class ItinerariosDAO implements I_ItinerariosDAO{
     
     private final ConexionMongoDB CONEXION;
-    private MongoDatabase database;
-    private String coleccion = "itinerarios";
+    private final MongoDatabase BASE_DATOS;
+    private final String COLECCION = "itinerarios";
 
     public ItinerariosDAO(ConexionMongoDB conexion) {
         this.CONEXION = conexion;
-        this.database = conexion.getBaseDatos();
+        this.BASE_DATOS = conexion.getBaseDatos();
     }
 
     @Override
-    public void agregarItinerario(Itinerario itinerario) {
-        MongoCollection<Document> collection = database.getCollection(coleccion);
-        Document document = new Document("nombre", itinerario.getNombre())
-                .append("horarios", itinerario.getHorarios())
-                .append("duracion", itinerario.getDuracion())
-                .append("longitud", itinerario.getLongitud())
-                .append("habitats", itinerario.getHabitats());
-
-        collection.insertOne(document);
+    public Itinerario agregarItinerario(Itinerario itinerario) {
+        MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
+        coleccion.insertOne(itinerario);
+        return itinerario;
     }
-
+    
     @Override
-    public void modificarItinerario(String nombreItinerario, Itinerario itinerarioModificado) {
-        MongoCollection<Document> collection = database.getCollection(coleccion);
-        Document filter = new Document("nombre", nombreItinerario);
-        Document update = new Document("$set", new Document("nombre", itinerarioModificado.getNombre())
-                .append("horarios", itinerarioModificado.getHorarios())
-                .append("duracion", itinerarioModificado.getDuracion())
-                .append("longitud", itinerarioModificado.getLongitud())
-                .append("habitats", itinerarioModificado.getHabitats()));
-
-        collection.updateOne(filter, update);
+    public Itinerario modificarItinerario(String nombreItinerario, Itinerario itinerarioModificado) {
+        MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
+        Bson filtro = Filters.eq("nombre", nombreItinerario);
+        Bson actualizacion = Updates.combine(
+            Updates.set("nombre", itinerarioModificado.getNombre()),
+            Updates.set("horarios", itinerarioModificado.getHorarios()),
+            Updates.set("duracion", itinerarioModificado.getDuracion()),
+            Updates.set("longitud", itinerarioModificado.getLongitud()),
+            Updates.set("habitats", itinerarioModificado.getHabitats())    
+        );
+        
+        coleccion.updateOne(filtro, actualizacion);
+        return itinerarioModificado;
     }
 
     @Override
     public Itinerario buscarItinerario(String nombreItinerario) {
-        MongoCollection<Document> collection = database.getCollection(coleccion);
-        Document query = new Document("nombre", nombreItinerario);
-        Document result = collection.find(query).first();
-
-        if (result != null) {
-            String nombre = result.getString("nombre");
-            List<Horario> horarios = result.getList("horarios", Horario.class);
-            int duracion = result.getInteger("duracion");
-            int longitud = result.getInteger("longitud");
-            List<Habitat> habitats = result.getList("habitats", Habitat.class);
-
-            return new Itinerario(nombre, horarios, duracion, longitud, habitats);
-        }
-
-        return null;
+        MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
+        Bson filtro = Filters.eq("nombre", nombreItinerario);
+        return coleccion.find(filtro).first();
     }
 
     @Override
-    public Itinerario itinerarioPaginado() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'itinerarioPaginado'");
+    public List<Itinerario> itinerariosPaginado(int pagina, int elementosPorPagina) {
+        MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
+        int salto = (pagina-1) * elementosPorPagina;
+        
+        FindIterable<Itinerario> iterable = coleccion.find().skip(salto).limit(elementosPorPagina);
+        List<Itinerario> itinerarios = new ArrayList<>();
+        iterable.into(itinerarios);
+        
+        return itinerarios;
     }
     
 }

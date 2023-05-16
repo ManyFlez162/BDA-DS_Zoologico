@@ -13,6 +13,9 @@ public class Habitat {
     private int duracion;
     private int distancia;
 
+    public Habitat() {
+    }
+
     public Habitat(String nombre, int duracion, int distancia) {
         this.nombre = nombre;
         this.duracion = duracion;
@@ -51,4 +54,5 @@ public class Habitat {
                 ", distancia=" + distancia +
                 '}';
     }
+    
 }

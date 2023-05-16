@@ -4,16 +4,21 @@
  */
 package org.itson.dominio;
 
+import java.time.LocalTime;
+
 /**
  *
  * @author Manu
  */
 public class Horario {
     private String dia;
-    private String horaInicio;
-    private String horaFin;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
 
-    public Horario(String dia, String horaInicio, String horaFin) {
+    public Horario() {
+    }
+    
+    public Horario(String dia, LocalTime horaInicio, LocalTime horaFin) {
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -27,19 +32,30 @@ public class Horario {
         this.dia = dia;
     }
 
-    public String getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(String horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public String getHoraFin() {
+    public LocalTime getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(String horaFin) {
+    public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
     }
+    
+    // Método para calcular la hora de fin basada en la duración de los hábitats
+    public void calcularHoraFin(int duracionTotal) {
+        this.horaFin = this.horaInicio.plusMinutes(duracionTotal);
+    }
+
+    @Override
+    public String toString() {
+        return "Horario{" + "dia=" + dia + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + '}';
+    }
+    
 }

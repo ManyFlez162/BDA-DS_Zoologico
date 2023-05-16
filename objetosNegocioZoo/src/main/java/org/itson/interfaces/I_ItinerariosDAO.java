@@ -4,6 +4,7 @@
  */
 package org.itson.interfaces;
 
+import java.util.List;
 import org.itson.dominio.Itinerario;
 
 /**
@@ -11,13 +12,12 @@ import org.itson.dominio.Itinerario;
  * @author Cristian Eduardo Arreola Valenzuela 233140, Jorge Eduardo Elias Cazarez 187134, Manuel Francisco Flores Velazquez 233301, Alejandro Gil Aguilar 228773
  */
 public interface I_ItinerariosDAO {
-    public void agregarItinerario(Itinerario itinerario);
-
-    public void modificarItinerario(String nombreItinerario, Itinerario itinerarioModificado);
+    public Itinerario agregarItinerario(Itinerario itinerario);
+    
+    public Itinerario modificarItinerario(String nombreItinerario, Itinerario itinerarioModificado);
 
     public Itinerario buscarItinerario(String nombreItinerario);
 
-    public Itinerario itinerarioPaginado();
-
+    public List<Itinerario> itinerariosPaginado(int pagina, int elementosPorPagina);
 
 }

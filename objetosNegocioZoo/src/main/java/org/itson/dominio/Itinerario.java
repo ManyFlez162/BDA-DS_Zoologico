@@ -18,6 +18,9 @@ public class Itinerario {
     private int cantidadPersonas;
     private List<Habitat> habitats;
 
+    public Itinerario() {
+    }
+    
     public Itinerario(String nombre, List<Horario> horarios, int duracion, int longitud, List<Habitat> habitats) {
         this.nombre = nombre;
         this.horarios = horarios;
