@@ -15,7 +15,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  */
 public class ConexionMongoDB {
     
-    private final String NOMBRE_BASE_DATOS = "Zoologico";
+    private final String NOMBRE_BASE_DATOS = "animales";
     
     private MongoDatabase baseDatos;
     
