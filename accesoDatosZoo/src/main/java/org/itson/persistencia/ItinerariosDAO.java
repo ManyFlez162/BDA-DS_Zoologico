@@ -58,6 +58,14 @@ public class ItinerariosDAO implements I_ItinerariosDAO{
     }
 
     @Override
+    public List<Itinerario> obtenerTodosLosItinerarios() {
+        MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
+        List<Itinerario> itinerarios = new ArrayList<>();
+        coleccion.find().into(itinerarios);
+        return itinerarios;
+    }
+    
+    @Override
     public List<Itinerario> itinerariosPaginado(int pagina, int elementosPorPagina) {
         MongoCollection<Itinerario> coleccion = BASE_DATOS.getCollection(COLECCION, Itinerario.class);
         int salto = (pagina-1) * elementosPorPagina;

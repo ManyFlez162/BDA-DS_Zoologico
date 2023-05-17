@@ -18,6 +18,8 @@ public interface I_ItinerariosDAO {
 
     public Itinerario buscarItinerario(String nombreItinerario);
 
+    public List<Itinerario> obtenerTodosLosItinerarios();
+    
     public List<Itinerario> itinerariosPaginado(int pagina, int elementosPorPagina);
 
 }
