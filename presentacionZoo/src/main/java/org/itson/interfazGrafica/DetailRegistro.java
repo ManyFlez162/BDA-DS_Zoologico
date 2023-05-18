@@ -16,18 +16,20 @@ public class DetailRegistro extends javax.swing.JFrame {
      */
     public DetailRegistro() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         
-        btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px"));
-        lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas"));
-        lblCalendario.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_calendar_100px"));
-        lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px"));
-        lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px"));
-        lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1"));
-        tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1"));
-         tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px"));
-          tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px"));
-           tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px"));
-            tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px"));
+        btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
+        lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
+        lblCalendario.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_calendar_100px.png"));
+        lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px.png"));
+        lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px.png"));
+        lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
+        tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1.png"));
+         tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px.png"));
+          tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
+           tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
+            tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
         
     }
 
@@ -116,6 +118,7 @@ public class DetailRegistro extends javax.swing.JFrame {
         pnlCTop.setBackground(new java.awt.Color(0, 52, 81));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Itinerario:");
 
         lblNombreItinerario.setPreferredSize(new java.awt.Dimension(412, 48));
@@ -148,116 +151,119 @@ public class DetailRegistro extends javax.swing.JFrame {
         pnlCCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Longitud del recorrido");
         pnlCCenter.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Max. participantes");
         pnlCCenter.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, -1, -1));
-
-        lbl_ImagenRecorrido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_sneaker_40px_1.png"))); // NOI18N
         pnlCCenter.add(lbl_ImagenRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
 
         lblLongitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLongitud.setForeground(new java.awt.Color(255, 255, 255));
         lblLongitud.setText("130");
         pnlCCenter.add(lblLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 230, -1, -1));
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Metros");
         pnlCCenter.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 235, -1, -1));
 
         lblParticipantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblParticipantes.setForeground(new java.awt.Color(255, 255, 255));
         lblParticipantes.setText("20");
         pnlCCenter.add(lblParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 330, -1, -1));
 
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Minutos");
         pnlCCenter.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 235, -1, -1));
-
-        lbl_ImagenParticipantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_User_Groups_40px.png"))); // NOI18N
         pnlCCenter.add(lbl_ImagenParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 40, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Duracion del recorrido");
         pnlCCenter.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         lblDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDuracion.setForeground(new java.awt.Color(255, 255, 255));
         lblDuracion.setText("60");
         pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
-
-        lblReloj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_clock_40px.png"))); // NOI18N
         pnlCCenter.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
 
         tbtnB.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_b_50px.png"))); // NOI18N
         tbtnB.setBorder(null);
         pnlCCenter.add(tbtnB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
 
         tbtnC.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_c_50px.png"))); // NOI18N
         tbtnC.setBorder(null);
         tbtnC.setContentAreaFilled(false);
         tbtnC.setEnabled(false);
         pnlCCenter.add(tbtnC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
         tbtnD.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_d_50px.png"))); // NOI18N
         tbtnD.setBorder(null);
         tbtnD.setContentAreaFilled(false);
         tbtnD.setEnabled(false);
         pnlCCenter.add(tbtnD, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
         tbtnE.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_e_50px.png"))); // NOI18N
         tbtnE.setBorder(null);
         tbtnE.setContentAreaFilled(false);
         tbtnE.setEnabled(false);
         pnlCCenter.add(tbtnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
 
         tbtnA.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_a_50px_1.png"))); // NOI18N
         tbtnA.setBorder(null);
         pnlCCenter.add(tbtnA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
-        lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/zoomap-zonas.png"))); // NOI18N
         lblMap.setText("jLabel3");
         pnlCCenter.add(lblMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 660, 420));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Domingo");
         pnlCCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Lunes");
         pnlCCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Martes");
         pnlCCenter.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Miercoles");
         pnlCCenter.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Jueves");
         pnlCCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Viernes");
         pnlCCenter.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 100, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Sabado");
         pnlCCenter.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, -1, -1));
 
         lblHoraDomingo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraDomingo.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraDomingo.setText("09:00");
         pnlCCenter.add(lblHoraDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
 
         lblHoraSabado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraSabado.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraSabado.setText("09:00");
         pnlCCenter.add(lblHoraSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(845, 130, -1, -1));
-
-        lblCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_calendar_100px.png"))); // NOI18N
         pnlCCenter.add(lblCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
 
         lblHoraLunes.setPreferredSize(new java.awt.Dimension(35, 20));

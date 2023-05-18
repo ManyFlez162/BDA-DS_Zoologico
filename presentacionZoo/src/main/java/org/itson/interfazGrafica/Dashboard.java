@@ -27,6 +27,8 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard(ConexionMongoDB conexion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         administrador = new FachadaAdministradorItinerarios(conexion);
         this.conexion = conexion;
         

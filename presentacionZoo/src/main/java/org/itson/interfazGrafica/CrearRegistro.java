@@ -39,6 +39,8 @@ public class CrearRegistro extends javax.swing.JFrame {
      */
     public CrearRegistro(ConexionMongoDB conexion, IAdministradorItinerarios administrador, Dashboard anterior) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         this.administrador = administrador;
         this.conexion = conexion;
         this.anterior = anterior;
