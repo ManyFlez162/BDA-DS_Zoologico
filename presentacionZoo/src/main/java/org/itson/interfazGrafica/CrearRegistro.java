@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -64,6 +65,9 @@ public class CrearRegistro extends javax.swing.JFrame {
         txfViernes.setEnabled(false);
         txfSabado.setEnabled(false);
         txfDomingo.setEnabled(false);
+        
+        
+        
     }
 
     public boolean guardarItinerario(){
@@ -102,7 +106,12 @@ public class CrearRegistro extends javax.swing.JFrame {
         
         itinerario.setHorarios(listaHorarios);
         
-        itinerario.setCantidadPersonas(25);
+        int participants = 0;
+        
+        Random random = new Random();
+        participants = random.nextInt(11) + 20;
+        
+        itinerario.setCantidadPersonas(participants);
         
         int longitudTotal = 0;
         

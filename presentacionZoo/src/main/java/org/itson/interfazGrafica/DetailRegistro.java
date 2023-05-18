@@ -13,6 +13,8 @@ import org.itson.dominio.Itinerario;
 import org.itson.interfaces.IAdministradorItinerarios;
 import org.itson.persistencia.ConexionMongoDB;
 import org.itson.validadores.Validadores;
+import java.util.Random;
+
 /**
  *
  * @author Ryzen 5
@@ -57,11 +59,10 @@ public class DetailRegistro extends javax.swing.JFrame {
            tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
             tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
             
-             lblNombreItinerario.setText(itinerario.getNombre());
+        lblNombreItinerario.setText(itinerario.getNombre());
         lblDuracion.setText(String.valueOf(itinerario.getDuracion()));
         lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
         lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
-
         
         List<Horario> horarios = itinerario.getHorarios();
         for(Horario horario: horarios){
@@ -95,8 +96,30 @@ public class DetailRegistro extends javax.swing.JFrame {
             }
         }
         
+        List<Habitat> habitats = itinerario.getHabitats();
         
-        
+        for(Habitat habitat: habitats){
+            if(habitat.getNombre().equalsIgnoreCase("Granja de animales")){
+                tbtnA.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Acuaticos")){
+                tbtnB.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Reptiles")){
+                tbtnC.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Aviarios")){
+                tbtnD.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Africanos")){
+                tbtnE.setSelected(true);
+            }
+            
+        }
         
     }
 

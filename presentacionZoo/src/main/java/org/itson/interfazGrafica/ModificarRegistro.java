@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.itson.dominio.Habitat;
@@ -51,7 +52,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
           lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
         lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px.png"));
         lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px.png"));
-        lblGuardar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"));
+        btnGuardar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"));
         tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1.png"));
          tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px.png"));
           tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
@@ -71,6 +72,64 @@ public class ModificarRegistro extends javax.swing.JFrame {
         lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
         lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
         
+        List<Horario> horarios = itinerario.getHorarios();
+        for(Horario horario: horarios){
+            if(horario.getDia().equalsIgnoreCase("Lunes")){
+                txtfHoraInicioLunes.setText(horario.getHoraInicio().toString());
+            } else {
+                if(horario.getDia().equalsIgnoreCase("Martes")){
+                txtfHoraInicioMartes.setText(horario.getHoraInicio().toString());
+            } else {
+                    if(horario.getDia().equalsIgnoreCase("Miercoles")){
+                txtfHoraInicioMiercoles.setText(horario.getHoraInicio().toString());
+            } else {
+                        if(horario.getDia().equalsIgnoreCase("Jueves")){
+                txtfHoraInicioJueves.setText(horario.getHoraInicio().toString());
+            } else {
+                            if(horario.getDia().equalsIgnoreCase("Viernes")){
+                txtfHoraInicioViernes.setText(horario.getHoraInicio().toString());
+            } else {
+                                if(horario.getDia().equalsIgnoreCase("Sabado")){
+                txtfHoraInicioSabado.setText(horario.getHoraInicio().toString());
+            } else {
+                                    if(horario.getDia().equalsIgnoreCase("Domingo")){
+                txtfHoraInicioDomingo.setText(horario.getHoraInicio().toString());
+            }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+        List<Habitat> habitats = itinerario.getHabitats();
+        
+        for(Habitat habitat: habitats){
+            if(habitat.getNombre().equalsIgnoreCase("Granja de animales")){
+                tbtnA.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Acuaticos")){
+                tbtnB.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Reptiles")){
+                tbtnC.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Aviarios")){
+                tbtnD.setSelected(true);
+            }
+            
+            if(habitat.getNombre().equalsIgnoreCase("Africanos")){
+                tbtnE.setSelected(true);
+            }
+            
+        }
+        
+
     }
 
     /**
@@ -121,7 +180,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         lblDuracion = new javax.swing.JLabel();
         lblReloj = new javax.swing.JLabel();
-        lblGuardar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         tbtnB = new javax.swing.JToggleButton();
         tbtnC = new javax.swing.JToggleButton();
         tbtnD = new javax.swing.JToggleButton();
@@ -203,6 +262,11 @@ public class ModificarRegistro extends javax.swing.JFrame {
         pnlCCenter.add(lblDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
 
         cbxLunes.setText("L");
+        cbxLunes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLunesActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(cbxLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
 
         cbxDomingo.setText("D");
@@ -214,18 +278,43 @@ public class ModificarRegistro extends javax.swing.JFrame {
         pnlCCenter.add(cbxDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 60, -1, -1));
 
         cbxMartes.setText("Ma");
+        cbxMartes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMartesActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(cbxMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, -1, -1));
 
         cbxMiercoles.setText("Mi");
+        cbxMiercoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMiercolesActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(cbxMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
 
         cbxJueves.setText("J");
+        cbxJueves.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxJuevesActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(cbxJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, -1, -1));
 
         cbxViernes.setText("V");
+        cbxViernes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxViernesActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(cbxViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, -1, 20));
 
         cbxSabado.setText("S");
+        cbxSabado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxSabadoActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(cbxSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 60, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -305,12 +394,17 @@ public class ModificarRegistro extends javax.swing.JFrame {
         pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
         pnlCCenter.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
 
-        lblGuardar.setBackground(new java.awt.Color(0, 52, 81));
-        lblGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        lblGuardar.setForeground(new java.awt.Color(0, 185, 249));
-        lblGuardar.setText("SAVE");
-        lblGuardar.setBorder(null);
-        pnlCCenter.add(lblGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
+        btnGuardar.setBackground(new java.awt.Color(0, 52, 81));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 185, 249));
+        btnGuardar.setText("SAVE");
+        btnGuardar.setBorder(null);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        pnlCCenter.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
 
         tbtnB.setBackground(new java.awt.Color(62, 170, 206));
         tbtnB.setBorder(null);
@@ -362,8 +456,6 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
     public boolean guardarItinerario(){
         
-        
-        
         if (!tbtnA.isSelected() && !tbtnB.isSelected() && !tbtnC.isSelected() && !tbtnD.isSelected() && !tbtnE.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un hábitat.",
                 "Error de validación", JOptionPane.ERROR_MESSAGE);
@@ -385,7 +477,12 @@ public class ModificarRegistro extends javax.swing.JFrame {
         
         itinerario.setHorarios(listaHorarios);
         
-        itinerario.setCantidadPersonas(25);
+        int participants = 0;
+        
+        Random random = new Random();
+        participants = random.nextInt(11) + 20;
+        
+        itinerario.setCantidadPersonas(participants);
         
         int longitudTotal = 0;
         
@@ -424,15 +521,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioLunes.calcularHoraFin(duracionTotal);
                 
-                if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioLunes); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
-
-               
+                listaHorarios.add(horarioLunes); // Agregar el horario a la lista
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -455,13 +545,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioMartes.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioMartes); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                listaHorarios.add(horarioMartes); // Agregar el horario a la lista
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -484,13 +569,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioMiercoles.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioMiercoles); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                listaHorarios.add(horarioMiercoles); // Agregar el horario a la lista
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -513,13 +593,9 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioJueves.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioJueves); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                
+                listaHorarios.add(horarioJueves); // Agregar el horario a la lista
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -542,13 +618,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioViernes.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioViernes); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                listaHorarios.add(horarioViernes); // Agregar el horario a la lista
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -571,13 +641,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioSabado.calcularHoraFin(duracionTotal);
 
-               if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioSabado); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                listaHorarios.add(horarioSabado); // Agregar el horario a la lista
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -600,13 +664,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioDomingo.calcularHoraFin(duracionTotal);
 
-               if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioDomingo); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                } 
+                listaHorarios.add(horarioDomingo); // Agregar el horario a la lista
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -627,9 +685,87 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
     private void cbxDomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDomingoActionPerformed
         // TODO add your handling code here:
+        if(cbxDomingo.isSelected()){
+            txtfHoraInicioDomingo.setEnabled(true);
+        } else{
+            txtfHoraInicioDomingo.setEnabled(false);
+            txtfHoraInicioDomingo.setText("");
+        }
     }//GEN-LAST:event_cbxDomingoActionPerformed
 
+    private void cbxLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLunesActionPerformed
+        // TODO add your handling code here:
+        if(cbxLunes.isSelected()){
+            txtfHoraInicioLunes.setEnabled(true);
+        } else{
+            txtfHoraInicioLunes.setEnabled(false);
+            txtfHoraInicioLunes.setText("");
+        }
+    }//GEN-LAST:event_cbxLunesActionPerformed
+
+    private void cbxMartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMartesActionPerformed
+        // TODO add your handling code here:
+        if(cbxMartes.isSelected()){
+            txtfHoraInicioMartes.setEnabled(true);
+        } else{
+            txtfHoraInicioMartes.setEnabled(false);
+            txtfHoraInicioMartes.setText("");
+        }
+    }//GEN-LAST:event_cbxMartesActionPerformed
+
+    private void cbxMiercolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMiercolesActionPerformed
+        // TODO add your handling code here:
+        if(cbxMiercoles.isSelected()){
+            txtfHoraInicioMiercoles.setEnabled(true);
+        } else{
+            txtfHoraInicioMiercoles.setEnabled(false);
+            txtfHoraInicioMiercoles.setText("");
+        }
+    }//GEN-LAST:event_cbxMiercolesActionPerformed
+
+    private void cbxJuevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxJuevesActionPerformed
+        // TODO add your handling code here:
+        if(cbxJueves.isSelected()){
+            txtfHoraInicioJueves.setEnabled(true);
+        } else{
+            txtfHoraInicioJueves.setEnabled(false);
+            txtfHoraInicioJueves.setText("");
+        }
+    }//GEN-LAST:event_cbxJuevesActionPerformed
+
+    private void cbxViernesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxViernesActionPerformed
+        // TODO add your handling code here:
+        if(cbxViernes.isSelected()){
+            txtfHoraInicioViernes.setEnabled(true);
+        } else{
+            txtfHoraInicioViernes.setEnabled(false);
+            txtfHoraInicioViernes.setText("");
+        }
+    }//GEN-LAST:event_cbxViernesActionPerformed
+
+    private void cbxSabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSabadoActionPerformed
+        // TODO add your handling code here:
+        if(cbxViernes.isSelected()){
+            txtfHoraInicioSabado.setEnabled(true);
+        } else{
+            txtfHoraInicioSabado.setEnabled(false);
+            txtfHoraInicioSabado.setText("");
+        }
+    }//GEN-LAST:event_cbxSabadoActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        if(this.guardarItinerario()){
+            new Dashboard(conexion).setVisible(true);
+            
+            JOptionPane.showMessageDialog(this, "Se ha modificado el itinerario","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+            
+            dispose();
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JCheckBox cbxDomingo;
     private javax.swing.JCheckBox cbxJueves;
@@ -651,7 +787,6 @@ public class ModificarRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDias;
     private javax.swing.JLabel lblDuracion;
-    private javax.swing.JButton lblGuardar;
     private javax.swing.JLabel lblLongitud;
     private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblNombreRegistro;
