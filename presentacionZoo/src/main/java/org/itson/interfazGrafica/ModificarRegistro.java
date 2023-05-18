@@ -4,20 +4,47 @@
  */
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import org.itson.dominio.Habitat;
+import org.itson.dominio.Horario;
+import org.itson.dominio.Itinerario;
+import org.itson.interfaces.IAdministradorItinerarios;
+import org.itson.persistencia.ConexionMongoDB;
+import org.itson.validadores.Validadores;
 /**
  *
  * @author Ryzen 5
  */
 public class ModificarRegistro extends javax.swing.JFrame {
 
+    private IAdministradorItinerarios administrador;
+    private ConexionMongoDB conexion;
+    private List<Habitat> listaHabitats;
+    private List<Horario> listaHorarios;
+    private Validadores validadores;
+    private Itinerario itinerario;
+    
     /**
      * Creates new form Registros
      */
-    public ModificarRegistro() {
+    public ModificarRegistro(ConexionMongoDB conexion, IAdministradorItinerarios administrador, Itinerario itinerario) {
         initComponents();
         this.setLocationRelativeTo(null);
         setResizable(false);
+        this.administrador = administrador;
+        this.conexion = conexion;
+        this.listaHabitats = new ArrayList<>();
+        this.listaHorarios = new ArrayList<>();
+        this.validadores = new Validadores();
+        this.itinerario = itinerario;
+        
+        
+        
          btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
          lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
           lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
@@ -29,6 +56,20 @@ public class ModificarRegistro extends javax.swing.JFrame {
           tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
            tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
             tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
+            
+        txtfHoraInicioLunes.setEnabled(false);
+        txtfHoraInicioMartes.setEnabled(false);
+        txtfHoraInicioMiercoles.setEnabled(false);
+        txtfHoraInicioJueves.setEnabled(false);
+        txtfHoraInicioViernes.setEnabled(false);
+        txtfHoraInicioSabado.setEnabled(false);
+        txtfHoraInicioDomingo.setEnabled(false);
+        
+        lblNombreRegistro.setText(itinerario.getNombre());
+        lblDuracion.setText(String.valueOf(itinerario.getDuracion()));
+        lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
+        lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
+        
     }
 
     /**
@@ -126,7 +167,6 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
         lblNombreRegistro.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblNombreRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreRegistro.setText("Rey Leon");
         lblNombreRegistro.setPreferredSize(new java.awt.Dimension(292, 48));
 
         javax.swing.GroupLayout pnlCTopLayout = new javax.swing.GroupLayout(pnlCTop);
@@ -319,6 +359,221 @@ public class ModificarRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean guardarItinerario(){
+        
+        
+        
+        if (!tbtnA.isSelected() && !tbtnB.isSelected() && !tbtnC.isSelected() && !tbtnD.isSelected() && !tbtnE.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un hábitat.",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(!cbxLunes.isSelected() && !cbxMartes.isSelected() && !cbxMiercoles.isSelected() && !cbxJueves.isSelected() &&
+            !cbxViernes.isSelected() && !cbxSabado.isSelected() && !cbxDomingo.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un día.",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        itinerario.setHabitats(listaHabitats);
+        
+        if(!this.generaHorarios()){
+            return false;
+        }
+        
+        itinerario.setHorarios(listaHorarios);
+        
+        itinerario.setCantidadPersonas(25);
+        
+        int longitudTotal = 0;
+        
+        for(Habitat habitat: listaHabitats){
+            longitudTotal += habitat.getDistancia();
+        }
+        
+        itinerario.setLongitud(longitudTotal);
+        
+        if(!administrador.validarHorarioDisponible(itinerario)){
+            JOptionPane.showMessageDialog(this, "Ya hay un itinerario este dia a esta hora.",
+                "Advertencia cruzadas", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        administrador.modificacionItinerario(itinerario);
+        
+        return true;
+    }
+    
+    public boolean generaHorarios(){
+        int duracionTotal = 0;
+        
+        if (cbxLunes.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioLunes.getText())) {
+                Horario horarioLunes = new Horario();
+                horarioLunes.setDia("Lunes");
+
+                LocalTime horaInicioLunes = LocalTime.parse(txtfHoraInicioLunes.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioLunes.setHoraInicio(horaInicioLunes);
+
+                for (Habitat habitat : listaHabitats) {
+                    duracionTotal += habitat.getDuracion();
+                }
+
+                horarioLunes.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioLunes); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        if (cbxMartes.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioMartes.getText())) {
+                Horario horarioMartes = new Horario();
+                horarioMartes.setDia("Martes");
+
+                LocalTime horaInicioMartes = LocalTime.parse(txtfHoraInicioMartes.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioMartes.setHoraInicio(horaInicioMartes);
+
+                for (Habitat habitat : listaHabitats) {
+                    duracionTotal += habitat.getDuracion();
+                }
+
+                horarioMartes.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioMartes); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        if (cbxMiercoles.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioMiercoles.getText())) {
+                Horario horarioMiercoles = new Horario();
+                horarioMiercoles.setDia("Miercoles");
+
+                LocalTime horaInicioMiercoles = LocalTime.parse(txtfHoraInicioMiercoles.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioMiercoles.setHoraInicio(horaInicioMiercoles);
+
+                for (Habitat habitat : listaHabitats) {
+                     duracionTotal += habitat.getDuracion();
+                }
+
+                horarioMiercoles.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioMiercoles); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                       "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        if (cbxJueves.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioJueves.getText())) {
+                Horario horarioJueves = new Horario();
+                horarioJueves.setDia("Jueves");
+
+                LocalTime horaInicioJueves = LocalTime.parse(txtfHoraInicioJueves.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioJueves.setHoraInicio(horaInicioJueves);
+
+                for (Habitat habitat : listaHabitats) {
+                    duracionTotal += habitat.getDuracion();
+                }
+
+                horarioJueves.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioJueves); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        if (cbxViernes.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioViernes.getText())) {
+                Horario horarioViernes = new Horario();
+                horarioViernes.setDia("Viernes");
+
+                LocalTime horaInicioViernes = LocalTime.parse(txtfHoraInicioViernes.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioViernes.setHoraInicio(horaInicioViernes);
+
+                for (Habitat habitat : listaHabitats) {
+                    duracionTotal += habitat.getDuracion();
+                }
+
+                horarioViernes.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioViernes); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                       "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        if (cbxSabado.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioSabado.getText())) {
+                Horario horarioSabado = new Horario();
+                horarioSabado.setDia("Sabado");
+
+                LocalTime horaInicioSabado = LocalTime.parse(txtfHoraInicioSabado.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioSabado.setHoraInicio(horaInicioSabado);
+
+                for (Habitat habitat : listaHabitats) {
+                    duracionTotal += habitat.getDuracion();
+                }
+
+                horarioSabado.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioSabado); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        if (cbxDomingo.isSelected()) {
+            if (validadores.validarHora(txtfHoraInicioDomingo.getText())) {
+                Horario horarioDomingo = new Horario();
+                horarioDomingo.setDia("Domingo");
+
+                LocalTime horaInicioDomingo = LocalTime.parse(txtfHoraInicioDomingo.getText(),
+                        DateTimeFormatter.ofPattern("HH:mm"));
+                horarioDomingo.setHoraInicio(horaInicioDomingo);
+
+                for (Habitat habitat : listaHabitats) {
+                    duracionTotal += habitat.getDuracion();
+                }
+
+                horarioDomingo.calcularHoraFin(duracionTotal);
+
+                listaHorarios.add(horarioDomingo); // Agregar el horario a la lista
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
+                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        itinerario.setDuracion(duracionTotal);
+        
+        return true;
+    }
+    
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -326,20 +581,6 @@ public class ModificarRegistro extends javax.swing.JFrame {
     private void cbxDomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDomingoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxDomingoActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        FlatDarkLaf.setup();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarRegistro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;

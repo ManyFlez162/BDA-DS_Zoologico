@@ -29,30 +29,27 @@ public class CrearRegistro extends javax.swing.JFrame {
 
     private IAdministradorItinerarios administrador;
     private ConexionMongoDB conexion;
-    private Dashboard anterior;
     private List<Habitat> listaHabitats;
     private List<Horario> listaHorarios;
     private Validadores validadores;
+    private Itinerario itinerario;
     
     /**
      * Creates new form Registros
      */
-    public CrearRegistro(ConexionMongoDB conexion, IAdministradorItinerarios administrador, Dashboard anterior) {
+    public CrearRegistro(ConexionMongoDB conexion, IAdministradorItinerarios administrador) {
         initComponents();
         this.setLocationRelativeTo(null);
         setResizable(false);
         this.administrador = administrador;
         this.conexion = conexion;
-        this.anterior = anterior;
         this.listaHabitats = new ArrayList<>();
         this.listaHorarios = new ArrayList<>();
         this.validadores = new Validadores();
+        this.itinerario = new Itinerario();
         
         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
         lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
-        lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
-        lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px.png"));
-        lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px.png"));
         btnGuardar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"));
         tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1.png"));
         tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px.png"));
@@ -69,37 +66,64 @@ public class CrearRegistro extends javax.swing.JFrame {
         txfDomingo.setEnabled(false);
     }
 
-    public void guardarItinerario(){
-        Itinerario itinerario = new Itinerario();
-        itinerario.setNombre(txtfNombreItinerario.getText());
+    public boolean guardarItinerario(){
+        if(!txtfNombreItinerario.getText().isEmpty()){
+            itinerario.setNombre(txtfNombreItinerario.getText());
+        } else{
+            JOptionPane.showMessageDialog(this, "Por favor, indique el nombre del itinerario.",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         
         if(!administrador.validarNombreItinerario(itinerario)){
             JOptionPane.showMessageDialog(this, "El nombre del itinerario ya existe. Por favor, elija otro nombre.",
                 "Error de validación", JOptionPane.ERROR_MESSAGE);
-            return;
+            return false;
         }
         
         if (!tbtnA.isSelected() && !tbtnB.isSelected() && !tbtnC.isSelected() && !tbtnD.isSelected() && !tbtnE.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un hábitat.",
                 "Error de validación", JOptionPane.ERROR_MESSAGE);
-            return;
+            return false;
         }
         
         if(!cbxLunes.isSelected() && !cbxMartes.isSelected() && !cbxMiercoles.isSelected() && !cbxJueves.isSelected() &&
             !cbxViernes.isSelected() && !cbxSabado.isSelected() && !cbxDomingo.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un día.",
                 "Error de validación", JOptionPane.ERROR_MESSAGE);
-            return;
+            return false;
         }
         
-        this.generaHorarios();
+        itinerario.setHabitats(listaHabitats);
         
+        if(!this.generaHorarios()){
+            return false;
+        }
         
+        itinerario.setHorarios(listaHorarios);
         
+        itinerario.setCantidadPersonas(25);
         
+        int longitudTotal = 0;
+        
+        for(Habitat habitat: listaHabitats){
+            longitudTotal += habitat.getDistancia();
+        }
+        
+        itinerario.setLongitud(longitudTotal);
+        
+        if(!administrador.validarHorarioDisponible(itinerario)){
+            JOptionPane.showMessageDialog(this, "Ya hay un itinerario este dia a esta hora.",
+                "Advertencia cruzadas", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        administrador.enviarItinerario(itinerario);
+        
+        return true;
     }
     
-    public void generaHorarios(){
+    public boolean generaHorarios(){
         int duracionTotal = 0;
         
         if (cbxLunes.isSelected()) {
@@ -121,7 +145,7 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
 
@@ -144,7 +168,7 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
         
@@ -167,7 +191,7 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
 
@@ -190,7 +214,7 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
         
@@ -213,7 +237,7 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
 
@@ -236,7 +260,7 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
 
@@ -259,15 +283,14 @@ public class CrearRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
         
+        itinerario.setDuracion(duracionTotal);
+        
+        return true;
     }
-    
-    
-    
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -301,17 +324,6 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lbl_ImagenRecorrido = new javax.swing.JLabel();
-        lblLongitud = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        lblParticipantes = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        lbl_ImagenParticipantes = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        lblDuracion = new javax.swing.JLabel();
-        lblReloj = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         tbtnB = new javax.swing.JToggleButton();
         tbtnC = new javax.swing.JToggleButton();
@@ -484,53 +496,17 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel6.setText(":");
         pnlCCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Longitud del recorrido");
-        pnlCCenter.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Max. participantes");
-        pnlCCenter.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, -1, -1));
-        pnlCCenter.add(lbl_ImagenRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
-
-        lblLongitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblLongitud.setForeground(new java.awt.Color(255, 255, 255));
-        lblLongitud.setText("130");
-        pnlCCenter.add(lblLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 230, -1, -1));
-
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Metros");
-        pnlCCenter.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 235, -1, -1));
-
-        lblParticipantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblParticipantes.setForeground(new java.awt.Color(255, 255, 255));
-        lblParticipantes.setText("20");
-        pnlCCenter.add(lblParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 330, -1, -1));
-
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Minutos");
-        pnlCCenter.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 235, -1, -1));
-        pnlCCenter.add(lbl_ImagenParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 40, 40));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Duracion del recorrido");
-        pnlCCenter.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
-
-        lblDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblDuracion.setForeground(new java.awt.Color(255, 255, 255));
-        lblDuracion.setText("60");
-        pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
-        pnlCCenter.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
-
         btnGuardar.setBackground(new java.awt.Color(0, 52, 81));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(0, 185, 249));
         btnGuardar.setText("SAVE");
         btnGuardar.setBorder(null);
-        pnlCCenter.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        pnlCCenter.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 230, -1, -1));
 
         tbtnB.setBackground(new java.awt.Color(62, 170, 206));
         tbtnB.setBorder(null);
@@ -613,7 +589,7 @@ public class CrearRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        this.anterior.setVisible(true);
+        new Dashboard(conexion).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -732,9 +708,22 @@ public class CrearRegistro extends javax.swing.JFrame {
             Habitat habitat = new Habitat("Africanos", 35, 300);
             listaHabitats.add(habitat);
         } else{
-            listaHabitats.removeIf(habitat -> habitat.getNombre().equals("Aviarios"));
+            listaHabitats.removeIf(habitat -> habitat.getNombre().equals("Africanos"));
         }
     }//GEN-LAST:event_tbtnEActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        if(this.guardarItinerario()){
+            new Dashboard(conexion).setVisible(true);
+            
+            JOptionPane.showMessageDialog(this, "Se ha registrado el itinerario nuevo","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+            
+            dispose();
+        }
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -747,26 +736,15 @@ public class CrearRegistro extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbxSabado;
     private javax.swing.JCheckBox cbxViernes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDetalles;
     private javax.swing.JLabel lblDias;
-    private javax.swing.JLabel lblDuracion;
-    private javax.swing.JLabel lblLongitud;
     private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblNombreItinerario;
-    private javax.swing.JLabel lblParticipantes;
-    private javax.swing.JLabel lblReloj;
-    private javax.swing.JLabel lbl_ImagenParticipantes;
-    private javax.swing.JLabel lbl_ImagenRecorrido;
     private javax.swing.JPanel pnlCBottom;
     private javax.swing.JPanel pnlCCenter;
     private javax.swing.JPanel pnlCTop;

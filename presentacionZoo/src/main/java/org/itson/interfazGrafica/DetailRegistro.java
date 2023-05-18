@@ -98,7 +98,6 @@ public class DetailRegistro extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(0, 23, 31));
         btnRegresar.setForeground(new java.awt.Color(0, 23, 31));
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
         btnRegresar.setBorder(null);
         btnRegresar.setBorderPainted(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {

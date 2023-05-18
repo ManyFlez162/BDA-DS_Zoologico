@@ -4,8 +4,12 @@
  */
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import org.itson.dominio.Horario;
 import org.itson.dominio.Itinerario;
@@ -21,6 +25,7 @@ public class Dashboard extends javax.swing.JFrame {
     private IAdministradorItinerarios administrador;
     private ConexionMongoDB conexion;
     private int paginaActual = 1;
+    private Itinerario ITINERARIO;
     
     /**
      * Creates new form Registros
@@ -31,6 +36,33 @@ public class Dashboard extends javax.swing.JFrame {
         setResizable(false);
         administrador = new FachadaAdministradorItinerarios(conexion);
         this.conexion = conexion;
+        this.ITINERARIO = new Itinerario();
+        
+        jScrollPane1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = tablaItinerarios.getSelectedRow();
+                if (row >= 0) {
+                    String nombre = tablaItinerarios.getValueAt(row, 0).toString();
+                    
+                    ITINERARIO = administrador.regresarItinerarioPorNombre(nombre);
+                }
+            }
+        });
+        
+        tablaItinerarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = tablaItinerarios.getSelectedRow();
+                    if (selectedRow != -1) {
+                        String nombre = (String) tablaItinerarios.getValueAt(selectedRow, 0);
+                        
+                        ITINERARIO = administrador.regresarItinerarioPorNombre(nombre);
+                    }
+                }
+            }
+        });
         
         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
         id.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_tag_20px.png"));
@@ -49,7 +81,7 @@ public class Dashboard extends javax.swing.JFrame {
     public void generarTablaItinerarios(){
         DefaultTableModel modelo = (DefaultTableModel) tablaItinerarios.getModel();
         modelo.setRowCount(0);
-        int elementosPagina = 2;
+        int elementosPagina = 20;
         
         List<Itinerario> itinerarios = administrador.itinerariosPaginado(paginaActual, elementosPagina);
         
@@ -332,12 +364,14 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void btnAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAniadirActionPerformed
         // TODO add your handling code here:
-        new CrearRegistro(conexion, administrador, this).setVisible(true);
+        new CrearRegistro(conexion, administrador).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAniadirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+        new ModificarRegistro(conexion, administrador, ITINERARIO).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnRegresarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPaginaActionPerformed
@@ -351,7 +385,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnAvanzarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarPaginaActionPerformed
         // TODO add your handling code here:
         List<Itinerario> itinerarios = administrador.regresarTodosItinerarios();
-        int elementosPagina = 2;
+        int elementosPagina = 20;
         int numPaginas = (int) Math.ceil((double) itinerarios.size() / elementosPagina);
         
         if(paginaActual<numPaginas){

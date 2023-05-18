@@ -24,6 +24,8 @@ public interface IAdministradorItinerarios {
     
     public void modificacionItinerario(Itinerario itinerario);
     
+    public Itinerario regresarItinerarioPorNombre(String nombreItinerario);
+    
     public Itinerario regresarItinerario(Itinerario itinerario);
     
     public List<Itinerario> regresarTodosItinerarios();

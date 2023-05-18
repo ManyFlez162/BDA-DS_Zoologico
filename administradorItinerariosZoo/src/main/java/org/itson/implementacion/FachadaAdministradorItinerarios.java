@@ -82,6 +82,10 @@ public class FachadaAdministradorItinerarios implements IAdministradorItinerario
         itinerariosDAO.modificarItinerario(itinerario.getNombre(), itinerario);
     }
 
+    public Itinerario regresarItinerarioPorNombre(String nombreItinerario){
+        return itinerariosDAO.buscarItinerario(nombreItinerario);
+    }
+    
     @Override
     public Itinerario regresarItinerario(Itinerario itinerario) {
         return itinerariosDAO.buscarItinerario(itinerario.getNombre());
