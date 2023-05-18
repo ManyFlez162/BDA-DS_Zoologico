@@ -12,8 +12,7 @@ import java.util.regex.Pattern;
  */
 public class Validadores {
 
-
-        public boolean validarTiempo(int minutos) {
+    public boolean validarTiempo(int minutos) {
         return minutos > 0 && minutos <= 90;
     }
      

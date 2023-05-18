@@ -92,6 +92,8 @@ public class Dashboard extends javax.swing.JFrame {
         pnlCenter = new javax.swing.JPanel();
         pnlCTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblOpcion = new javax.swing.JLabel();
+        lblDetalles = new javax.swing.JLabel();
         pnlCCenter = new javax.swing.JPanel();
         id = new javax.swing.JLabel();
         correo = new javax.swing.JLabel();
@@ -141,7 +143,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registros");
+        jLabel1.setText("Registro de itinerarios");
+
+        lblOpcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblOpcion.setForeground(new java.awt.Color(255, 255, 255));
+        lblOpcion.setText("Seleccione una opción:");
+
+        lblDetalles.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDetalles.setForeground(new java.awt.Color(255, 255, 255));
+        lblDetalles.setText("Para modificar e imprimir, primero seleccione un itinerario de la tabla");
 
         javax.swing.GroupLayout pnlCTopLayout = new javax.swing.GroupLayout(pnlCTop);
         pnlCTop.setLayout(pnlCTopLayout);
@@ -149,15 +159,24 @@ public class Dashboard extends javax.swing.JFrame {
             pnlCTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCTopLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addContainerGap(1018, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCTopLayout.createSequentialGroup()
+                .addContainerGap(347, Short.MAX_VALUE)
+                .addComponent(lblDetalles)
+                .addGap(97, 97, 97)
+                .addComponent(lblOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150))
         );
         pnlCTopLayout.setVerticalGroup(
             pnlCTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCTopLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlCTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDetalles)))
         );
 
         pnlCenter.add(pnlCTop, java.awt.BorderLayout.PAGE_START);
@@ -354,7 +373,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblDetalles;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblOpcion;
     private javax.swing.JLabel lbl_Id;
     private javax.swing.JLabel nombre;
     private javax.swing.JPanel pnlCBottom;
