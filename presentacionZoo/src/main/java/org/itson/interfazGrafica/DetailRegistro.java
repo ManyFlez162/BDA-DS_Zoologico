@@ -4,6 +4,7 @@
  */
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Ryzen 5
@@ -15,6 +16,19 @@ public class DetailRegistro extends javax.swing.JFrame {
      */
     public DetailRegistro() {
         initComponents();
+        
+        btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px"));
+        lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas"));
+        lblCalendario.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_calendar_100px"));
+        lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px"));
+        lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px"));
+        lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1"));
+        tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1"));
+         tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px"));
+          tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px"));
+           tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px"));
+            tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px"));
+        
     }
 
     /**
@@ -37,20 +51,20 @@ public class DetailRegistro extends javax.swing.JFrame {
         pnlCCenter = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbl_ImagenRecorrido = new javax.swing.JLabel();
         lblLongitud = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lblParticipantes = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lbl_ImagenParticipantes = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         lblDuracion = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton7 = new javax.swing.JToggleButton();
+        lblReloj = new javax.swing.JLabel();
+        tbtnB = new javax.swing.JToggleButton();
+        tbtnC = new javax.swing.JToggleButton();
+        tbtnD = new javax.swing.JToggleButton();
+        tbtnE = new javax.swing.JToggleButton();
+        tbtnA = new javax.swing.JToggleButton();
         lblMap = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,7 +75,7 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         lblHoraDomingo = new javax.swing.JLabel();
         lblHoraSabado = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        lblCalendario = new javax.swing.JLabel();
         lblHoraLunes = new javax.swing.JLabel();
         lblHoraMartes = new javax.swing.JLabel();
         lblHoraMiercoles = new javax.swing.JLabel();
@@ -141,8 +155,8 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel8.setText("Max. participantes");
         pnlCCenter.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, -1, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_sneaker_40px_1.png"))); // NOI18N
-        pnlCCenter.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
+        lbl_ImagenRecorrido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_sneaker_40px_1.png"))); // NOI18N
+        pnlCCenter.add(lbl_ImagenRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
 
         lblLongitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblLongitud.setText("130");
@@ -158,8 +172,8 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel13.setText("Minutos");
         pnlCCenter.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 235, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_User_Groups_40px.png"))); // NOI18N
-        pnlCCenter.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 40, 40));
+        lbl_ImagenParticipantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_User_Groups_40px.png"))); // NOI18N
+        pnlCCenter.add(lbl_ImagenParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 40, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setText("Duracion del recorrido");
@@ -169,39 +183,39 @@ public class DetailRegistro extends javax.swing.JFrame {
         lblDuracion.setText("60");
         pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_clock_40px.png"))); // NOI18N
-        pnlCCenter.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
+        lblReloj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_clock_40px.png"))); // NOI18N
+        pnlCCenter.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
 
-        jToggleButton3.setBackground(new java.awt.Color(62, 170, 206));
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_b_50px.png"))); // NOI18N
-        jToggleButton3.setBorder(null);
-        pnlCCenter.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
+        tbtnB.setBackground(new java.awt.Color(62, 170, 206));
+        tbtnB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_b_50px.png"))); // NOI18N
+        tbtnB.setBorder(null);
+        pnlCCenter.add(tbtnB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
 
-        jToggleButton4.setBackground(new java.awt.Color(62, 170, 206));
-        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_c_50px.png"))); // NOI18N
-        jToggleButton4.setBorder(null);
-        jToggleButton4.setContentAreaFilled(false);
-        jToggleButton4.setEnabled(false);
-        pnlCCenter.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
+        tbtnC.setBackground(new java.awt.Color(62, 170, 206));
+        tbtnC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_c_50px.png"))); // NOI18N
+        tbtnC.setBorder(null);
+        tbtnC.setContentAreaFilled(false);
+        tbtnC.setEnabled(false);
+        pnlCCenter.add(tbtnC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
-        jToggleButton5.setBackground(new java.awt.Color(62, 170, 206));
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_d_50px.png"))); // NOI18N
-        jToggleButton5.setBorder(null);
-        jToggleButton5.setContentAreaFilled(false);
-        jToggleButton5.setEnabled(false);
-        pnlCCenter.add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        tbtnD.setBackground(new java.awt.Color(62, 170, 206));
+        tbtnD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_d_50px.png"))); // NOI18N
+        tbtnD.setBorder(null);
+        tbtnD.setContentAreaFilled(false);
+        tbtnD.setEnabled(false);
+        pnlCCenter.add(tbtnD, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
-        jToggleButton6.setBackground(new java.awt.Color(62, 170, 206));
-        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_e_50px.png"))); // NOI18N
-        jToggleButton6.setBorder(null);
-        jToggleButton6.setContentAreaFilled(false);
-        jToggleButton6.setEnabled(false);
-        pnlCCenter.add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
+        tbtnE.setBackground(new java.awt.Color(62, 170, 206));
+        tbtnE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_e_50px.png"))); // NOI18N
+        tbtnE.setBorder(null);
+        tbtnE.setContentAreaFilled(false);
+        tbtnE.setEnabled(false);
+        pnlCCenter.add(tbtnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
 
-        jToggleButton7.setBackground(new java.awt.Color(62, 170, 206));
-        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_a_50px_1.png"))); // NOI18N
-        jToggleButton7.setBorder(null);
-        pnlCCenter.add(jToggleButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        tbtnA.setBackground(new java.awt.Color(62, 170, 206));
+        tbtnA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_a_50px_1.png"))); // NOI18N
+        tbtnA.setBorder(null);
+        pnlCCenter.add(tbtnA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
         lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/zoomap-zonas.png"))); // NOI18N
         lblMap.setText("jLabel3");
@@ -243,8 +257,8 @@ public class DetailRegistro extends javax.swing.JFrame {
         lblHoraSabado.setText("09:00");
         pnlCCenter.add(lblHoraSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(845, 130, -1, -1));
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_calendar_100px.png"))); // NOI18N
-        pnlCCenter.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
+        lblCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_calendar_100px.png"))); // NOI18N
+        pnlCCenter.add(lblCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
 
         lblHoraLunes.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, -1));
@@ -309,26 +323,18 @@ public class DetailRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JLabel lblCalendario;
     private javax.swing.JLabel lblDuracion;
     private javax.swing.JLabel lblHoraDomingo;
     private javax.swing.JLabel lblHoraJueves;
@@ -341,11 +347,19 @@ public class DetailRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblNombreItinerario;
     private javax.swing.JLabel lblParticipantes;
+    private javax.swing.JLabel lblReloj;
+    private javax.swing.JLabel lbl_ImagenParticipantes;
+    private javax.swing.JLabel lbl_ImagenRecorrido;
     private javax.swing.JPanel pnlCBottom;
     private javax.swing.JPanel pnlCCenter;
     private javax.swing.JPanel pnlCTop;
     private javax.swing.JPanel pnlCenter;
     private javax.swing.JPanel pnlRoot;
     private javax.swing.JPanel pnlSide;
+    private javax.swing.JToggleButton tbtnA;
+    private javax.swing.JToggleButton tbtnB;
+    private javax.swing.JToggleButton tbtnC;
+    private javax.swing.JToggleButton tbtnD;
+    private javax.swing.JToggleButton tbtnE;
     // End of variables declaration//GEN-END:variables
 }

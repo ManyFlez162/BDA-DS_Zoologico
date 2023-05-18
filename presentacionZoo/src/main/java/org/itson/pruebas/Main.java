@@ -4,6 +4,8 @@
  */
 package org.itson.pruebas;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import org.itson.interfazGrafica.Dashboard;
 import org.itson.persistencia.ConexionMongoDB;
 
@@ -20,6 +22,9 @@ public class Main {
         
         ConexionMongoDB conexion = new ConexionMongoDB();
         new Dashboard(conexion).setVisible(true);
+        
+       
+        
         
     }
     

@@ -5,6 +5,7 @@
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import org.itson.dominio.Horario;
 import org.itson.dominio.Itinerario;
@@ -26,7 +27,15 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard(ConexionMongoDB conexion) {
         initComponents();
         administrador = new FachadaAdministradorItinerarios(conexion);
-        
+         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px"));
+          id.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_tag_20px"));
+         correo.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_mail_20px"));
+          nombre.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_20px"));
+            lblAniadir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_add_50px"));
+              lblModificar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_edit_50px"));
+                lbl_Imprimir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_eye_50px"));
+                 btnRegresarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/arrow_40Lpx"));
+                  btnAvanzarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_arrow_40px"));
     }
 
     public void generarTablaItinerarios(){
