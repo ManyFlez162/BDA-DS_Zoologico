@@ -41,22 +41,24 @@ public class Dashboard extends javax.swing.JFrame {
         pnlRoot = new javax.swing.JPanel();
         pnlSide = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
         pnlCenter = new javax.swing.JPanel();
         pnlCTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pnlCCenter = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        correo = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        lbl_Id = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tablaItinerarios = new javax.swing.JTable();
+        lbl_Imprimir = new javax.swing.JButton();
+        lblAniadir = new javax.swing.JButton();
+        lblModificar = new javax.swing.JButton();
+        btnAvanzarPagina = new javax.swing.JButton();
+        btnRegresarPagina = new javax.swing.JButton();
         pnlCBottom = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,17 +72,17 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(100, 150));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jButton1.setBackground(new java.awt.Color(0, 23, 31));
-        jButton1.setForeground(new java.awt.Color(0, 23, 31));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresar.setBackground(new java.awt.Color(0, 23, 31));
+        btnRegresar.setForeground(new java.awt.Color(0, 23, 31));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
+        btnRegresar.setBorder(null);
+        btnRegresar.setBorderPainted(false);
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnRegresar);
 
         pnlSide.add(jPanel1);
 
@@ -117,34 +119,34 @@ public class Dashboard extends javax.swing.JFrame {
         pnlCCenter.setForeground(new java.awt.Color(0, 185, 249));
         pnlCCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_name_tag_20px.png"))); // NOI18N
-        jLabel23.setText("ID:");
-        pnlCCenter.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_name_tag_20px.png"))); // NOI18N
+        id.setText("ID:");
+        pnlCCenter.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_mail_20px.png"))); // NOI18N
-        jLabel24.setText("Correo:");
-        pnlCCenter.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        correo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        correo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_mail_20px.png"))); // NOI18N
+        correo.setText("Correo:");
+        pnlCCenter.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_name_20px.png"))); // NOI18N
-        jLabel25.setText("Nombre:");
-        pnlCCenter.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
+        nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_name_20px.png"))); // NOI18N
+        nombre.setText("Nombre:");
+        pnlCCenter.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel26.setText("00118");
-        pnlCCenter.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        lbl_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_Id.setText("00118");
+        pnlCCenter.add(lbl_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel27.setText("sigan@viendo.com");
-        pnlCCenter.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCorreo.setText("sigan@viendo.com");
+        pnlCCenter.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel28.setText("José de la Cruz Porfirio Díaz");
-        pnlCCenter.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombre.setText("José de la Cruz Porfirio Díaz");
+        pnlCCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaItinerarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Zona Oeste S/D", "Sabado - Domingo"}
             },
@@ -160,53 +162,64 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        tablaItinerarios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaItinerarios);
+        if (tablaItinerarios.getColumnModel().getColumnCount() > 0) {
+            tablaItinerarios.getColumnModel().getColumn(0).setResizable(false);
+            tablaItinerarios.getColumnModel().getColumn(1).setResizable(false);
         }
 
         pnlCCenter.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 20, 490, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 52, 81));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 185, 249));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_eye_50px.png"))); // NOI18N
-        jButton2.setText("Imprimir");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        lbl_Imprimir.setBackground(new java.awt.Color(0, 52, 81));
+        lbl_Imprimir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_Imprimir.setForeground(new java.awt.Color(0, 185, 249));
+        lbl_Imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_eye_50px.png"))); // NOI18N
+        lbl_Imprimir.setText("Imprimir");
+        lbl_Imprimir.setBorder(null);
+        lbl_Imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                lbl_ImprimirActionPerformed(evt);
             }
         });
-        pnlCCenter.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 190, -1, -1));
+        pnlCCenter.add(lbl_Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 190, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 52, 81));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 185, 249));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_add_50px.png"))); // NOI18N
-        jButton3.setText("Añadir");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        lblAniadir.setBackground(new java.awt.Color(0, 52, 81));
+        lblAniadir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAniadir.setForeground(new java.awt.Color(0, 185, 249));
+        lblAniadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_add_50px.png"))); // NOI18N
+        lblAniadir.setText("Añadir");
+        lblAniadir.setBorder(null);
+        lblAniadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                lblAniadirActionPerformed(evt);
             }
         });
-        pnlCCenter.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
+        pnlCCenter.add(lblAniadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
 
-        jButton4.setBackground(new java.awt.Color(0, 52, 81));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 185, 249));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_edit_50px.png"))); // NOI18N
-        jButton4.setText("Modificar");
-        jButton4.setBorder(null);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        lblModificar.setBackground(new java.awt.Color(0, 52, 81));
+        lblModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblModificar.setForeground(new java.awt.Color(0, 185, 249));
+        lblModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_edit_50px.png"))); // NOI18N
+        lblModificar.setText("Modificar");
+        lblModificar.setBorder(null);
+        lblModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                lblModificarActionPerformed(evt);
             }
         });
-        pnlCCenter.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, -1, -1));
+        pnlCCenter.add(lblModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, -1, -1));
+
+        btnAvanzarPagina.setBackground(new java.awt.Color(0, 52, 81));
+        btnAvanzarPagina.setForeground(new java.awt.Color(0, 185, 249));
+        btnAvanzarPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_arrow_40px.png"))); // NOI18N
+        btnAvanzarPagina.setBorder(null);
+        pnlCCenter.add(btnAvanzarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 40, 40));
+
+        btnRegresarPagina.setBackground(new java.awt.Color(0, 52, 81));
+        btnRegresarPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/arrow_40Lpx.png"))); // NOI18N
+        btnRegresarPagina.setBorder(null);
+        pnlCCenter.add(btnRegresarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 40, 40));
 
         pnlCenter.add(pnlCCenter, java.awt.BorderLayout.CENTER);
 
@@ -233,21 +246,21 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void lbl_ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_ImprimirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_lbl_ImprimirActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void lblAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblAniadirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_lblAniadirActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void lblModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_lblModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,25 +277,27 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAvanzarPagina;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnRegresarPagina;
+    private javax.swing.JLabel correo;
+    private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton lblAniadir;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JButton lblModificar;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lbl_Id;
+    private javax.swing.JButton lbl_Imprimir;
+    private javax.swing.JLabel nombre;
     private javax.swing.JPanel pnlCBottom;
     private javax.swing.JPanel pnlCCenter;
     private javax.swing.JPanel pnlCTop;
     private javax.swing.JPanel pnlCenter;
     private javax.swing.JPanel pnlRoot;
     private javax.swing.JPanel pnlSide;
+    private javax.swing.JTable tablaItinerarios;
     // End of variables declaration//GEN-END:variables
 }

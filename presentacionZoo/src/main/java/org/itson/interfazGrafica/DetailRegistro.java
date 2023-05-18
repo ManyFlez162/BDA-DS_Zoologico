@@ -29,21 +29,22 @@ public class DetailRegistro extends javax.swing.JFrame {
         pnlRoot = new javax.swing.JPanel();
         pnlSide = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
         pnlCenter = new javax.swing.JPanel();
         pnlCTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblNombreItinerario = new javax.swing.JLabel();
         pnlCCenter = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblLongitud = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblParticipantes = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblDuracion = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
@@ -58,9 +59,14 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lblHoraDomingo = new javax.swing.JLabel();
+        lblHoraSabado = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        lblHoraLunes = new javax.swing.JLabel();
+        lblHoraMartes = new javax.swing.JLabel();
+        lblHoraMiercoles = new javax.swing.JLabel();
+        lblHoraJueves = new javax.swing.JLabel();
+        lblHoraViernes = new javax.swing.JLabel();
         pnlCBottom = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,17 +80,17 @@ public class DetailRegistro extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(100, 150));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jButton1.setBackground(new java.awt.Color(0, 23, 31));
-        jButton1.setForeground(new java.awt.Color(0, 23, 31));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresar.setBackground(new java.awt.Color(0, 23, 31));
+        btnRegresar.setForeground(new java.awt.Color(0, 23, 31));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
+        btnRegresar.setBorder(null);
+        btnRegresar.setBorderPainted(false);
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnRegresar);
 
         pnlSide.add(jPanel1);
 
@@ -96,7 +102,9 @@ public class DetailRegistro extends javax.swing.JFrame {
         pnlCTop.setBackground(new java.awt.Color(0, 52, 81));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Itinerario: Zona Oeste S/D");
+        jLabel1.setText("Itinerario:");
+
+        lblNombreItinerario.setPreferredSize(new java.awt.Dimension(412, 48));
 
         javax.swing.GroupLayout pnlCTopLayout = new javax.swing.GroupLayout(pnlCTop);
         pnlCTop.setLayout(pnlCTopLayout);
@@ -105,14 +113,18 @@ public class DetailRegistro extends javax.swing.JFrame {
             .addGroup(pnlCTopLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addContainerGap(753, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblNombreItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(293, Short.MAX_VALUE))
         );
         pnlCTopLayout.setVerticalGroup(
             pnlCTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCTopLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGroup(pnlCTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombreItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pnlCenter.add(pnlCTop, java.awt.BorderLayout.PAGE_START);
@@ -132,16 +144,16 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_sneaker_40px_1.png"))); // NOI18N
         pnlCCenter.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("130");
-        pnlCCenter.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 230, -1, -1));
+        lblLongitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLongitud.setText("130");
+        pnlCCenter.add(lblLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 230, -1, -1));
 
         jLabel11.setText("Metros");
         pnlCCenter.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 235, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("20");
-        pnlCCenter.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 330, -1, -1));
+        lblParticipantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblParticipantes.setText("20");
+        pnlCCenter.add(lblParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 330, -1, -1));
 
         jLabel13.setText("Minutos");
         pnlCCenter.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 235, -1, -1));
@@ -153,9 +165,9 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel15.setText("Duracion del recorrido");
         pnlCCenter.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel16.setText("60");
-        pnlCCenter.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
+        lblDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDuracion.setText("60");
+        pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_clock_40px.png"))); // NOI18N
         pnlCCenter.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
@@ -223,16 +235,31 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel19.setText("Sabado");
         pnlCCenter.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, -1, -1));
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setText("09:00");
-        pnlCCenter.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
+        lblHoraDomingo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraDomingo.setText("09:00");
+        pnlCCenter.add(lblHoraDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel21.setText("09:00");
-        pnlCCenter.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(845, 130, -1, -1));
+        lblHoraSabado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraSabado.setText("09:00");
+        pnlCCenter.add(lblHoraSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(845, 130, -1, -1));
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_calendar_100px.png"))); // NOI18N
         pnlCCenter.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
+
+        lblHoraLunes.setPreferredSize(new java.awt.Dimension(35, 20));
+        pnlCCenter.add(lblHoraLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, -1));
+
+        lblHoraMartes.setPreferredSize(new java.awt.Dimension(35, 20));
+        pnlCCenter.add(lblHoraMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, -1, -1));
+
+        lblHoraMiercoles.setPreferredSize(new java.awt.Dimension(35, 20));
+        pnlCCenter.add(lblHoraMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, -1, -1));
+
+        lblHoraJueves.setPreferredSize(new java.awt.Dimension(35, 20));
+        pnlCCenter.add(lblHoraJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
+
+        lblHoraViernes.setPreferredSize(new java.awt.Dimension(35, 20));
+        pnlCCenter.add(lblHoraViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
 
         pnlCenter.add(pnlCCenter, java.awt.BorderLayout.CENTER);
 
@@ -259,9 +286,9 @@ public class DetailRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,21 +305,16 @@ public class DetailRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -307,7 +329,18 @@ public class DetailRegistro extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JLabel lblDuracion;
+    private javax.swing.JLabel lblHoraDomingo;
+    private javax.swing.JLabel lblHoraJueves;
+    private javax.swing.JLabel lblHoraLunes;
+    private javax.swing.JLabel lblHoraMartes;
+    private javax.swing.JLabel lblHoraMiercoles;
+    private javax.swing.JLabel lblHoraSabado;
+    private javax.swing.JLabel lblHoraViernes;
+    private javax.swing.JLabel lblLongitud;
     private javax.swing.JLabel lblMap;
+    private javax.swing.JLabel lblNombreItinerario;
+    private javax.swing.JLabel lblParticipantes;
     private javax.swing.JPanel pnlCBottom;
     private javax.swing.JPanel pnlCCenter;
     private javax.swing.JPanel pnlCTop;

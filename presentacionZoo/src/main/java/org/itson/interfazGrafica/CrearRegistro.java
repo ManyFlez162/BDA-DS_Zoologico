@@ -29,7 +29,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         pnlRoot = new javax.swing.JPanel();
         pnlSide = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
         pnlCenter = new javax.swing.JPanel();
         pnlCTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -37,39 +37,36 @@ public class CrearRegistro extends javax.swing.JFrame {
         lblNombreItinerario = new javax.swing.JLabel();
         txtfNombreItinerario = new javax.swing.JTextField();
         lblDias = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
+        cbxLunes = new javax.swing.JCheckBox();
+        cbxDomingo = new javax.swing.JCheckBox();
+        cbxMartes = new javax.swing.JCheckBox();
+        cbxMiercoles = new javax.swing.JCheckBox();
+        cbxJueves = new javax.swing.JCheckBox();
+        cbxViernes = new javax.swing.JCheckBox();
+        cbxSabado = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
-        jFormattedTextField8 = new javax.swing.JFormattedTextField();
-        jFormattedTextField9 = new javax.swing.JFormattedTextField();
-        jFormattedTextField10 = new javax.swing.JFormattedTextField();
+        txtfHoraInicioMiercoles = new javax.swing.JFormattedTextField();
+        txtfHoraInicioMartes = new javax.swing.JFormattedTextField();
+        txtfHoraInicioLunes = new javax.swing.JFormattedTextField();
+        txtfHoraInicioJueves = new javax.swing.JFormattedTextField();
+        txtfHoraInicioViernes = new javax.swing.JFormattedTextField();
+        txtfHoraInicioSabado = new javax.swing.JFormattedTextField();
+        txtfHoraInicioDomingo = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblLongitud = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblParticipantes = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblDuracion = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jButton2 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
@@ -89,17 +86,17 @@ public class CrearRegistro extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(100, 150));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jButton1.setBackground(new java.awt.Color(0, 23, 31));
-        jButton1.setForeground(new java.awt.Color(0, 23, 31));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresar.setBackground(new java.awt.Color(0, 23, 31));
+        btnRegresar.setForeground(new java.awt.Color(0, 23, 31));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
+        btnRegresar.setBorder(null);
+        btnRegresar.setBorderPainted(false);
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnRegresar);
 
         pnlSide.add(jPanel1);
 
@@ -151,31 +148,31 @@ public class CrearRegistro extends javax.swing.JFrame {
         lblDias.setText("Dias:");
         pnlCCenter.add(lblDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
 
-        jCheckBox1.setText("L");
-        pnlCCenter.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
+        cbxLunes.setText("L");
+        pnlCCenter.add(cbxLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
 
-        jCheckBox2.setText("D");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        cbxDomingo.setText("D");
+        cbxDomingo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                cbxDomingoActionPerformed(evt);
             }
         });
-        pnlCCenter.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 60, -1, -1));
+        pnlCCenter.add(cbxDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 60, -1, -1));
 
-        jCheckBox3.setText("Ma");
-        pnlCCenter.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, -1, -1));
+        cbxMartes.setText("Ma");
+        pnlCCenter.add(cbxMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, -1, -1));
 
-        jCheckBox4.setText("Mi");
-        pnlCCenter.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
+        cbxMiercoles.setText("Mi");
+        pnlCCenter.add(cbxMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
 
-        jCheckBox5.setText("J");
-        pnlCCenter.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, -1, -1));
+        cbxJueves.setText("J");
+        pnlCCenter.add(cbxJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, -1, -1));
 
-        jCheckBox6.setText("V");
-        pnlCCenter.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, -1, 20));
+        cbxViernes.setText("V");
+        pnlCCenter.add(cbxViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, -1, 20));
 
-        jCheckBox7.setText("S");
-        pnlCCenter.add(jCheckBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 60, -1, -1));
+        cbxSabado.setText("S");
+        pnlCCenter.add(cbxSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 60, -1, -1));
 
         jLabel3.setText("Hora");
         pnlCCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 30, -1));
@@ -189,26 +186,26 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel6.setText(":");
         pnlCCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
 
-        jFormattedTextField2.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, -1));
+        txtfHoraInicioMiercoles.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, -1));
 
-        jFormattedTextField5.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 40, -1));
+        txtfHoraInicioMartes.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 40, -1));
 
-        jFormattedTextField6.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 40, -1));
+        txtfHoraInicioLunes.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 40, -1));
 
-        jFormattedTextField7.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 40, -1));
+        txtfHoraInicioJueves.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 40, -1));
 
-        jFormattedTextField8.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, 40, -1));
+        txtfHoraInicioViernes.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, 40, -1));
 
-        jFormattedTextField9.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 120, 40, -1));
+        txtfHoraInicioSabado.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 120, 40, -1));
 
-        jFormattedTextField10.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(jFormattedTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 120, 40, -1));
+        txtfHoraInicioDomingo.setPreferredSize(new java.awt.Dimension(60, 22));
+        pnlCCenter.add(txtfHoraInicioDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 120, 40, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Longitud del recorrido");
@@ -221,16 +218,16 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_sneaker_40px_1.png"))); // NOI18N
         pnlCCenter.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("130");
-        pnlCCenter.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 230, -1, -1));
+        lblLongitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLongitud.setText("130");
+        pnlCCenter.add(lblLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 230, -1, -1));
 
         jLabel11.setText("Metros");
         pnlCCenter.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 235, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("20");
-        pnlCCenter.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 330, -1, -1));
+        lblParticipantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblParticipantes.setText("20");
+        pnlCCenter.add(lblParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 330, -1, -1));
 
         jLabel13.setText("Minutos");
         pnlCCenter.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 235, -1, -1));
@@ -242,39 +239,20 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel15.setText("Duracion del recorrido");
         pnlCCenter.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel16.setText("60");
-        pnlCCenter.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
+        lblDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDuracion.setText("60");
+        pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_clock_40px.png"))); // NOI18N
         pnlCCenter.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Tipo de recorrido");
-        pnlCCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, -1, -1));
-
-        jToggleButton2.setBackground(new java.awt.Color(0, 126, 167));
-        jToggleButton2.setText("Por zonas");
-        jToggleButton2.setPreferredSize(new java.awt.Dimension(93, 30));
-        pnlCCenter.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, -1));
-
-        jToggleButton1.setBackground(new java.awt.Color(0, 126, 167));
-        jToggleButton1.setText("Por habitats");
-        jToggleButton1.setPreferredSize(new java.awt.Dimension(93, 30));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        pnlCCenter.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(0, 52, 81));
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 185, 249));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"))); // NOI18N
-        jButton2.setText("SAVE");
-        jButton2.setBorder(null);
-        pnlCCenter.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
+        btnGuardar.setBackground(new java.awt.Color(0, 52, 81));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 185, 249));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"))); // NOI18N
+        btnGuardar.setText("SAVE");
+        btnGuardar.setBorder(null);
+        pnlCCenter.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
 
         jToggleButton3.setBackground(new java.awt.Color(62, 170, 206));
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_b_50px.png"))); // NOI18N
@@ -330,21 +308,17 @@ public class CrearRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtfNombreItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNombreItinerarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfNombreItinerarioActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void cbxDomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDomingoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_cbxDomingoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,32 +335,21 @@ public class CrearRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JFormattedTextField jFormattedTextField10;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
-    private javax.swing.JFormattedTextField jFormattedTextField8;
-    private javax.swing.JFormattedTextField jFormattedTextField9;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JCheckBox cbxDomingo;
+    private javax.swing.JCheckBox cbxJueves;
+    private javax.swing.JCheckBox cbxLunes;
+    private javax.swing.JCheckBox cbxMartes;
+    private javax.swing.JCheckBox cbxMiercoles;
+    private javax.swing.JCheckBox cbxSabado;
+    private javax.swing.JCheckBox cbxViernes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -395,22 +358,30 @@ public class CrearRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JLabel lblDias;
+    private javax.swing.JLabel lblDuracion;
+    private javax.swing.JLabel lblLongitud;
     private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblNombreItinerario;
+    private javax.swing.JLabel lblParticipantes;
     private javax.swing.JPanel pnlCBottom;
     private javax.swing.JPanel pnlCCenter;
     private javax.swing.JPanel pnlCTop;
     private javax.swing.JPanel pnlCenter;
     private javax.swing.JPanel pnlRoot;
     private javax.swing.JPanel pnlSide;
+    private javax.swing.JFormattedTextField txtfHoraInicioDomingo;
+    private javax.swing.JFormattedTextField txtfHoraInicioJueves;
+    private javax.swing.JFormattedTextField txtfHoraInicioLunes;
+    private javax.swing.JFormattedTextField txtfHoraInicioMartes;
+    private javax.swing.JFormattedTextField txtfHoraInicioMiercoles;
+    private javax.swing.JFormattedTextField txtfHoraInicioSabado;
+    private javax.swing.JFormattedTextField txtfHoraInicioViernes;
     private javax.swing.JTextField txtfNombreItinerario;
     // End of variables declaration//GEN-END:variables
 }
