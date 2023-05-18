@@ -4,19 +4,31 @@
  */
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
+import org.itson.implementacion.FachadaAdministradorItinerarios;
+import org.itson.interfaces.IAdministradorItinerarios;
+import org.itson.persistencia.ConexionMongoDB;
 /**
  *
  * @author Ryzen 5
  */
 public class Dashboard extends javax.swing.JFrame {
 
+    private IAdministradorItinerarios administrador;
+    
     /**
      * Creates new form Registros
      */
-    public Dashboard() {
+    public Dashboard(ConexionMongoDB conexion) {
         initComponents();
+        administrador = new FachadaAdministradorItinerarios(conexion);
+        
     }
 
+    public void generarTablaItinerarios(){
+        DefaultTableModel modelo = (DefaultTableModel)
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,14 +146,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Zona Oeste S/D", "Sabado - Domingo", "A - B"}
+                {"Zona Oeste S/D", "Sabado - Domingo"}
             },
             new String [] {
-                "Itinerario", "Horario", "Zonas"
+                "Itinerario", "Horario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -153,10 +165,9 @@ public class Dashboard extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        pnlCCenter.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+        pnlCCenter.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 20, 490, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 52, 81));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
