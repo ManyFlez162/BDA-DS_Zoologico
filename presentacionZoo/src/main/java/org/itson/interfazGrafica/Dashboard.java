@@ -37,13 +37,19 @@ public class Dashboard extends javax.swing.JFrame {
         administrador = new FachadaAdministradorItinerarios(conexion);
         this.conexion = conexion;
         this.ITINERARIO = new Itinerario();
+         btnModificar.setEnabled(false);
+          btnImprimir.setEnabled(false);
+        
         
         jScrollPane1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+               
                 int row = tablaItinerarios.getSelectedRow();
                 if (row >= 0) {
+      
                     String nombre = tablaItinerarios.getValueAt(row, 0).toString();
+ 
                     
                     ITINERARIO = administrador.regresarItinerarioPorNombre(nombre);
                 }
@@ -57,7 +63,8 @@ public class Dashboard extends javax.swing.JFrame {
                     int selectedRow = tablaItinerarios.getSelectedRow();
                     if (selectedRow != -1) {
                         String nombre = (String) tablaItinerarios.getValueAt(selectedRow, 0);
-                        
+                         btnModificar.setEnabled(true);
+                         btnImprimir.setEnabled(true);
                         ITINERARIO = administrador.regresarItinerarioPorNombre(nombre);
                     }
                 }
@@ -360,6 +367,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
+        new DetailRegistro(conexion, administrador, ITINERARIO).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAniadirActionPerformed

@@ -4,20 +4,46 @@
  */
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import org.itson.dominio.Habitat;
+import org.itson.dominio.Horario;
+import org.itson.dominio.Itinerario;
+import org.itson.interfaces.IAdministradorItinerarios;
+import org.itson.persistencia.ConexionMongoDB;
+import org.itson.validadores.Validadores;
 /**
  *
  * @author Ryzen 5
  */
 public class DetailRegistro extends javax.swing.JFrame {
 
+    private ConexionMongoDB conexion;
+    private IAdministradorItinerarios administrador;
+    private List<Habitat> listaHabitats;
+    private List<Horario> listaHorarios;
+    private Validadores validadores;
+    private Itinerario itinerario;
     /**
      * Creates new form Registros
      */
-    public DetailRegistro() {
+    public DetailRegistro(ConexionMongoDB conexion, IAdministradorItinerarios administrador, Itinerario itinerario) {
         initComponents();
         this.setLocationRelativeTo(null);
         setResizable(false);
+        tbtnA.setEnabled(false);
+        tbtnB.setEnabled(false);
+        tbtnC.setEnabled(false);
+        tbtnD.setEnabled(false);
+        tbtnE.setEnabled(false);
+        
+        this.administrador = administrador;
+        this.conexion = conexion;
+        this.listaHabitats = new ArrayList<>();
+        this.listaHorarios = new ArrayList<>();
+        this.validadores = new Validadores();
+        this.itinerario = itinerario;
         
         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
         lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
@@ -30,6 +56,14 @@ public class DetailRegistro extends javax.swing.JFrame {
           tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
            tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
             tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
+            
+             lblNombreItinerario.setText(itinerario.getNombre());
+        lblDuracion.setText(String.valueOf(itinerario.getDuracion()));
+        lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
+        lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
+        //////arreglar para actualizar las horas en el calendario
+        lblHoraSabado.setText(String.valueOf(itinerario.getHorarios()));
+        
         
     }
 
@@ -307,21 +341,11 @@ public class DetailRegistro extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        new Dashboard(conexion).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        FlatDarkLaf.setup();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DetailRegistro().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;

@@ -45,6 +45,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
         
         
         
+        
          btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
          lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
           lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
@@ -422,8 +423,16 @@ public class ModificarRegistro extends javax.swing.JFrame {
                 }
 
                 horarioLunes.calcularHoraFin(duracionTotal);
+                
+                if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioLunes); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                }
 
-                listaHorarios.add(horarioLunes); // Agregar el horario a la lista
+               
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -446,7 +455,13 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioMartes.calcularHoraFin(duracionTotal);
 
-                listaHorarios.add(horarioMartes); // Agregar el horario a la lista
+                if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioMartes); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -469,7 +484,13 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioMiercoles.calcularHoraFin(duracionTotal);
 
-                listaHorarios.add(horarioMiercoles); // Agregar el horario a la lista
+                if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioMiercoles); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -492,7 +513,13 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioJueves.calcularHoraFin(duracionTotal);
 
-                listaHorarios.add(horarioJueves); // Agregar el horario a la lista
+                if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioJueves); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -515,7 +542,13 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioViernes.calcularHoraFin(duracionTotal);
 
-                listaHorarios.add(horarioViernes); // Agregar el horario a la lista
+                if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioViernes); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -538,7 +571,13 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioSabado.calcularHoraFin(duracionTotal);
 
-                listaHorarios.add(horarioSabado); // Agregar el horario a la lista
+               if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioSabado); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -561,7 +600,13 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioDomingo.calcularHoraFin(duracionTotal);
 
-                listaHorarios.add(horarioDomingo); // Agregar el horario a la lista
+               if(validadores.validarTiempo(duracionTotal)){
+                     listaHorarios.add(horarioDomingo); // Agregar el horario a la lista
+                } else {
+                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+                } 
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -576,6 +621,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
     
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        new Dashboard(conexion).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void cbxDomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDomingoActionPerformed
