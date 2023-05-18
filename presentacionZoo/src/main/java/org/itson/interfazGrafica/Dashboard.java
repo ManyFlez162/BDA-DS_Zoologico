@@ -4,6 +4,10 @@
  */
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.itson.dominio.Horario;
+import org.itson.dominio.Itinerario;
 import org.itson.implementacion.FachadaAdministradorItinerarios;
 import org.itson.interfaces.IAdministradorItinerarios;
 import org.itson.persistencia.ConexionMongoDB;
@@ -14,6 +18,7 @@ import org.itson.persistencia.ConexionMongoDB;
 public class Dashboard extends javax.swing.JFrame {
 
     private IAdministradorItinerarios administrador;
+    private int paginaActual = 1;
     
     /**
      * Creates new form Registros
@@ -25,8 +30,38 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     public void generarTablaItinerarios(){
-        DefaultTableModel modelo = (DefaultTableModel)
+        DefaultTableModel modelo = (DefaultTableModel) tablaItinerarios.getModel();
+        modelo.setRowCount(0);
+        int elementosPagina = 2;
+        
+        List<Itinerario> itinerarios = administrador.itinerariosPaginado(paginaActual, elementosPagina);
+        
+        for(Itinerario itinerario: itinerarios){
+            String nombre = itinerario.getNombre();
+            List<Horario> horarios = itinerario.getHorarios();
+            StringBuilder diasString = new StringBuilder();
+            
+            for(int i = 0; i<horarios.size(); i++){
+                Horario horario = horarios.get(i);
+                String dia = horario.getDia();
+                
+                if(i>0){
+                    diasString.append(" - ");
+                }
+                
+                diasString.append(dia);
+                
+            }
+            
+            modelo.addRow(new Object[]{nombre, diasString.toString()});
+            
+        }
+        
+        tablaItinerarios.setModel(modelo);
+        
     }
+    
+    
     
     
     /**
@@ -214,11 +249,21 @@ public class Dashboard extends javax.swing.JFrame {
         btnAvanzarPagina.setForeground(new java.awt.Color(0, 185, 249));
         btnAvanzarPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_arrow_40px.png"))); // NOI18N
         btnAvanzarPagina.setBorder(null);
+        btnAvanzarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvanzarPaginaActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(btnAvanzarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 40, 40));
 
         btnRegresarPagina.setBackground(new java.awt.Color(0, 52, 81));
         btnRegresarPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/arrow_40Lpx.png"))); // NOI18N
         btnRegresarPagina.setBorder(null);
+        btnRegresarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarPaginaActionPerformed(evt);
+            }
+        });
         pnlCCenter.add(btnRegresarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 40, 40));
 
         pnlCenter.add(pnlCCenter, java.awt.BorderLayout.CENTER);
@@ -262,19 +307,27 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblModificarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void btnRegresarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPaginaActionPerformed
+        // TODO add your handling code here:
+        if(paginaActual > 1){
+            paginaActual--;
+            generarTablaItinerarios();
+        }
+    }//GEN-LAST:event_btnRegresarPaginaActionPerformed
 
-        FlatDarkLaf.setup();
+    private void btnAvanzarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarPaginaActionPerformed
+        // TODO add your handling code here:
+        List<Itinerario> itinerarios = administrador.regresarTodosItinerarios();
+        int elementosPagina = 2;
+        int numPaginas = (int) Math.ceil((double) itinerarios.size() / elementosPagina);
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Dashboard().setVisible(true);
-            }
-        });
-    }
+        if(paginaActual<numPaginas){
+            paginaActual++;
+            generarTablaItinerarios();
+        }
+        
+    }//GEN-LAST:event_btnAvanzarPaginaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvanzarPagina;
