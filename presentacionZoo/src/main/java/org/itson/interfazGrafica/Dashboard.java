@@ -19,6 +19,7 @@ import org.itson.persistencia.ConexionMongoDB;
 public class Dashboard extends javax.swing.JFrame {
 
     private IAdministradorItinerarios administrador;
+    private ConexionMongoDB conexion;
     private int paginaActual = 1;
     
     /**
@@ -27,15 +28,17 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard(ConexionMongoDB conexion) {
         initComponents();
         administrador = new FachadaAdministradorItinerarios(conexion);
-         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px"));
-          id.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_tag_20px"));
-         correo.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_mail_20px"));
-          nombre.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_20px"));
-            lblAniadir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_add_50px"));
-              lblModificar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_edit_50px"));
-                lbl_Imprimir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_eye_50px"));
-                 btnRegresarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/arrow_40Lpx"));
-                  btnAvanzarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_arrow_40px"));
+        this.conexion = conexion;
+        
+        btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
+        id.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_tag_20px.png"));
+        correo.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_mail_20px.png"));
+        nombre.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_20px.png"));
+        lblAniadir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_add_50px.png"));
+        lblModificar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_edit_50px.png"));
+        lbl_Imprimir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_eye_50px.png"));
+        btnRegresarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/arrow_40Lpx.png"));
+        btnAvanzarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_arrow_40px.png"));
     }
 
     public void generarTablaItinerarios(){
@@ -118,7 +121,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(0, 23, 31));
         btnRegresar.setForeground(new java.awt.Color(0, 23, 31));
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
         btnRegresar.setBorder(null);
         btnRegresar.setBorderPainted(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +140,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnlCTop.setBackground(new java.awt.Color(0, 52, 81));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registros");
 
         javax.swing.GroupLayout pnlCTopLayout = new javax.swing.GroupLayout(pnlCTop);
@@ -164,29 +167,32 @@ public class Dashboard extends javax.swing.JFrame {
         pnlCCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_name_tag_20px.png"))); // NOI18N
+        id.setForeground(new java.awt.Color(255, 255, 255));
         id.setText("ID:");
         pnlCCenter.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         correo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        correo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_mail_20px.png"))); // NOI18N
+        correo.setForeground(new java.awt.Color(255, 255, 255));
         correo.setText("Correo:");
         pnlCCenter.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_name_20px.png"))); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
         nombre.setText("Nombre:");
         pnlCCenter.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
 
         lbl_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_Id.setForeground(new java.awt.Color(255, 255, 255));
         lbl_Id.setText("00118");
         pnlCCenter.add(lbl_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         lblCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
         lblCorreo.setText("sigan@viendo.com");
         pnlCCenter.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("José de la Cruz Porfirio Díaz");
         pnlCCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
@@ -218,7 +224,6 @@ public class Dashboard extends javax.swing.JFrame {
         lbl_Imprimir.setBackground(new java.awt.Color(0, 52, 81));
         lbl_Imprimir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_Imprimir.setForeground(new java.awt.Color(0, 185, 249));
-        lbl_Imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_eye_50px.png"))); // NOI18N
         lbl_Imprimir.setText("Imprimir");
         lbl_Imprimir.setBorder(null);
         lbl_Imprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +236,6 @@ public class Dashboard extends javax.swing.JFrame {
         lblAniadir.setBackground(new java.awt.Color(0, 52, 81));
         lblAniadir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAniadir.setForeground(new java.awt.Color(0, 185, 249));
-        lblAniadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_add_50px.png"))); // NOI18N
         lblAniadir.setText("Añadir");
         lblAniadir.setBorder(null);
         lblAniadir.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +248,6 @@ public class Dashboard extends javax.swing.JFrame {
         lblModificar.setBackground(new java.awt.Color(0, 52, 81));
         lblModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblModificar.setForeground(new java.awt.Color(0, 185, 249));
-        lblModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_edit_50px.png"))); // NOI18N
         lblModificar.setText("Modificar");
         lblModificar.setBorder(null);
         lblModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +259,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnAvanzarPagina.setBackground(new java.awt.Color(0, 52, 81));
         btnAvanzarPagina.setForeground(new java.awt.Color(0, 185, 249));
-        btnAvanzarPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_arrow_40px.png"))); // NOI18N
         btnAvanzarPagina.setBorder(null);
         btnAvanzarPagina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +268,6 @@ public class Dashboard extends javax.swing.JFrame {
         pnlCCenter.add(btnAvanzarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 40, 40));
 
         btnRegresarPagina.setBackground(new java.awt.Color(0, 52, 81));
-        btnRegresarPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/arrow_40Lpx.png"))); // NOI18N
         btnRegresarPagina.setBorder(null);
         btnRegresarPagina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
