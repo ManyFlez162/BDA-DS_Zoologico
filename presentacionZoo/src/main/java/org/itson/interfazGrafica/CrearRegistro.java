@@ -5,28 +5,39 @@
 package org.itson.interfazGrafica;
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.ImageIcon;
+import org.itson.implementacion.FachadaAdministradorItinerarios;
+import org.itson.interfaces.IAdministradorItinerarios;
+import org.itson.persistencia.ConexionMongoDB;
 /**
  *
  * @author Ryzen 5
  */
 public class CrearRegistro extends javax.swing.JFrame {
 
+    private IAdministradorItinerarios administrador;
+    private ConexionMongoDB conexion;
+    private Dashboard anterior;
+    
     /**
      * Creates new form Registros
      */
-    public CrearRegistro() {
+    public CrearRegistro(ConexionMongoDB conexion, IAdministradorItinerarios administrador, Dashboard anterior) {
         initComponents();
-         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px"));
-         lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas"));
-          lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1"));
-        lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px"));
-        lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px"));
-        lblGuardar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_checked_checkbox_80px_1"));
-        tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1"));
-         tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px"));
-          tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px"));
-           tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px"));
-            tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px"));
+        this.administrador = administrador;
+        this.conexion = conexion;
+        this.anterior = anterior;
+        
+        btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
+        lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
+        lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
+        lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px.png"));
+        lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px.png"));
+        btnGuardar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"));
+        tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1.png"));
+        tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px.png"));
+        tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
+        tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
+        tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
     }
 
     /**
@@ -60,13 +71,6 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtfHoraInicioMiercoles = new javax.swing.JFormattedTextField();
-        txtfHoraInicioMartes = new javax.swing.JFormattedTextField();
-        txtfHoraInicioLunes = new javax.swing.JFormattedTextField();
-        txtfHoraInicioJueves = new javax.swing.JFormattedTextField();
-        txtfHoraInicioViernes = new javax.swing.JFormattedTextField();
-        txtfHoraInicioSabado = new javax.swing.JFormattedTextField();
-        txtfHoraInicioDomingo = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lbl_ImagenRecorrido = new javax.swing.JLabel();
@@ -78,13 +82,20 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         lblDuracion = new javax.swing.JLabel();
         lblReloj = new javax.swing.JLabel();
-        lblGuardar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         tbtnB = new javax.swing.JToggleButton();
         tbtnC = new javax.swing.JToggleButton();
         tbtnD = new javax.swing.JToggleButton();
         tbtnE = new javax.swing.JToggleButton();
         tbtnA = new javax.swing.JToggleButton();
         lblMap = new javax.swing.JLabel();
+        txfDomingo = new javax.swing.JTextField();
+        txfLunes = new javax.swing.JTextField();
+        txfMartes = new javax.swing.JTextField();
+        txfMiercoles = new javax.swing.JTextField();
+        txfJueves = new javax.swing.JTextField();
+        txfViernes = new javax.swing.JTextField();
+        txfSabado = new javax.swing.JTextField();
         pnlCBottom = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,7 +111,6 @@ public class CrearRegistro extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(0, 23, 31));
         btnRegresar.setForeground(new java.awt.Color(0, 23, 31));
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_back_to_60px.png"))); // NOI18N
         btnRegresar.setBorder(null);
         btnRegresar.setBorderPainted(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -198,27 +208,6 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel6.setText(":");
         pnlCCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
 
-        txtfHoraInicioMiercoles.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, -1));
-
-        txtfHoraInicioMartes.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 40, -1));
-
-        txtfHoraInicioLunes.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 40, -1));
-
-        txtfHoraInicioJueves.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 40, -1));
-
-        txtfHoraInicioViernes.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, 40, -1));
-
-        txtfHoraInicioSabado.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 120, 40, -1));
-
-        txtfHoraInicioDomingo.setPreferredSize(new java.awt.Dimension(60, 22));
-        pnlCCenter.add(txtfHoraInicioDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 120, 40, -1));
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Longitud del recorrido");
         pnlCCenter.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, -1, -1));
@@ -226,8 +215,6 @@ public class CrearRegistro extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Max. participantes");
         pnlCCenter.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, -1, -1));
-
-        lbl_ImagenRecorrido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_sneaker_40px_1.png"))); // NOI18N
         pnlCCenter.add(lbl_ImagenRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 40, 50));
 
         lblLongitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -243,8 +230,6 @@ public class CrearRegistro extends javax.swing.JFrame {
 
         jLabel13.setText("Minutos");
         pnlCCenter.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 235, -1, -1));
-
-        lbl_ImagenParticipantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_User_Groups_40px.png"))); // NOI18N
         pnlCCenter.add(lbl_ImagenParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 40, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -254,46 +239,44 @@ public class CrearRegistro extends javax.swing.JFrame {
         lblDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDuracion.setText("60");
         pnlCCenter.add(lblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
-
-        lblReloj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_clock_40px.png"))); // NOI18N
         pnlCCenter.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 40, 40));
 
-        lblGuardar.setBackground(new java.awt.Color(0, 52, 81));
-        lblGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        lblGuardar.setForeground(new java.awt.Color(0, 185, 249));
-        lblGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"))); // NOI18N
-        lblGuardar.setText("SAVE");
-        lblGuardar.setBorder(null);
-        pnlCCenter.add(lblGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
+        btnGuardar.setBackground(new java.awt.Color(0, 52, 81));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 185, 249));
+        btnGuardar.setText("SAVE");
+        btnGuardar.setBorder(null);
+        pnlCCenter.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
 
         tbtnB.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_b_50px.png"))); // NOI18N
         tbtnB.setBorder(null);
         pnlCCenter.add(tbtnB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
 
         tbtnC.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_c_50px.png"))); // NOI18N
         tbtnC.setBorder(null);
         pnlCCenter.add(tbtnC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
         tbtnD.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_d_50px.png"))); // NOI18N
         tbtnD.setBorder(null);
         pnlCCenter.add(tbtnD, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
         tbtnE.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_e_50px.png"))); // NOI18N
         tbtnE.setBorder(null);
         pnlCCenter.add(tbtnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
 
         tbtnA.setBackground(new java.awt.Color(62, 170, 206));
-        tbtnA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/icons8_a_50px_1.png"))); // NOI18N
         tbtnA.setBorder(null);
         pnlCCenter.add(tbtnA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
-        lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/zoomap-zonas.png"))); // NOI18N
         lblMap.setText("jLabel3");
         pnlCCenter.add(lblMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 660, 420));
+        pnlCCenter.add(txfDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 120, 40, -1));
+        pnlCCenter.add(txfLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 40, -1));
+        pnlCCenter.add(txfMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 40, -1));
+        pnlCCenter.add(txfMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, 40, -1));
+        pnlCCenter.add(txfJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 40, -1));
+        pnlCCenter.add(txfViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, 40, -1));
+        pnlCCenter.add(txfSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 120, 40, -1));
 
         pnlCenter.add(pnlCCenter, java.awt.BorderLayout.CENTER);
 
@@ -322,6 +305,8 @@ public class CrearRegistro extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        this.anterior.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtfNombreItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNombreItinerarioActionPerformed
@@ -332,21 +317,8 @@ public class CrearRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxDomingoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        FlatDarkLaf.setup();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CrearRegistro().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JCheckBox cbxDomingo;
     private javax.swing.JCheckBox cbxJueves;
@@ -368,7 +340,6 @@ public class CrearRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDias;
     private javax.swing.JLabel lblDuracion;
-    private javax.swing.JButton lblGuardar;
     private javax.swing.JLabel lblLongitud;
     private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblNombreItinerario;
@@ -387,13 +358,13 @@ public class CrearRegistro extends javax.swing.JFrame {
     private javax.swing.JToggleButton tbtnC;
     private javax.swing.JToggleButton tbtnD;
     private javax.swing.JToggleButton tbtnE;
-    private javax.swing.JFormattedTextField txtfHoraInicioDomingo;
-    private javax.swing.JFormattedTextField txtfHoraInicioJueves;
-    private javax.swing.JFormattedTextField txtfHoraInicioLunes;
-    private javax.swing.JFormattedTextField txtfHoraInicioMartes;
-    private javax.swing.JFormattedTextField txtfHoraInicioMiercoles;
-    private javax.swing.JFormattedTextField txtfHoraInicioSabado;
-    private javax.swing.JFormattedTextField txtfHoraInicioViernes;
+    private javax.swing.JTextField txfDomingo;
+    private javax.swing.JTextField txfJueves;
+    private javax.swing.JTextField txfLunes;
+    private javax.swing.JTextField txfMartes;
+    private javax.swing.JTextField txfMiercoles;
+    private javax.swing.JTextField txfSabado;
+    private javax.swing.JTextField txfViernes;
     private javax.swing.JTextField txtfNombreItinerario;
     // End of variables declaration//GEN-END:variables
 }

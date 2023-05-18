@@ -34,11 +34,14 @@ public class Dashboard extends javax.swing.JFrame {
         id.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_tag_20px.png"));
         correo.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_mail_20px.png"));
         nombre.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_name_20px.png"));
-        lblAniadir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_add_50px.png"));
-        lblModificar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_edit_50px.png"));
-        lbl_Imprimir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_eye_50px.png"));
+        btnAniadir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_add_50px.png"));
+        btnModificar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_edit_50px.png"));
+        btnImprimir.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_eye_50px.png"));
         btnRegresarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/arrow_40Lpx.png"));
         btnAvanzarPagina.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_arrow_40px.png"));
+        
+        generarTablaItinerarios();
+        
     }
 
     public void generarTablaItinerarios(){
@@ -73,9 +76,6 @@ public class Dashboard extends javax.swing.JFrame {
         
     }
     
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,9 +101,9 @@ public class Dashboard extends javax.swing.JFrame {
         lblNombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaItinerarios = new javax.swing.JTable();
-        lbl_Imprimir = new javax.swing.JButton();
-        lblAniadir = new javax.swing.JButton();
-        lblModificar = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
+        btnAniadir = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         btnAvanzarPagina = new javax.swing.JButton();
         btnRegresarPagina = new javax.swing.JButton();
         pnlCBottom = new javax.swing.JPanel();
@@ -221,41 +221,41 @@ public class Dashboard extends javax.swing.JFrame {
 
         pnlCCenter.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 20, 490, -1));
 
-        lbl_Imprimir.setBackground(new java.awt.Color(0, 52, 81));
-        lbl_Imprimir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_Imprimir.setForeground(new java.awt.Color(0, 185, 249));
-        lbl_Imprimir.setText("Imprimir");
-        lbl_Imprimir.setBorder(null);
-        lbl_Imprimir.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setBackground(new java.awt.Color(0, 52, 81));
+        btnImprimir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnImprimir.setForeground(new java.awt.Color(0, 185, 249));
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setBorder(null);
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lbl_ImprimirActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
-        pnlCCenter.add(lbl_Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 190, -1, -1));
+        pnlCCenter.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 190, -1, -1));
 
-        lblAniadir.setBackground(new java.awt.Color(0, 52, 81));
-        lblAniadir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblAniadir.setForeground(new java.awt.Color(0, 185, 249));
-        lblAniadir.setText("Añadir");
-        lblAniadir.setBorder(null);
-        lblAniadir.addActionListener(new java.awt.event.ActionListener() {
+        btnAniadir.setBackground(new java.awt.Color(0, 52, 81));
+        btnAniadir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAniadir.setForeground(new java.awt.Color(0, 185, 249));
+        btnAniadir.setText("Añadir");
+        btnAniadir.setBorder(null);
+        btnAniadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblAniadirActionPerformed(evt);
+                btnAniadirActionPerformed(evt);
             }
         });
-        pnlCCenter.add(lblAniadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
+        pnlCCenter.add(btnAniadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
 
-        lblModificar.setBackground(new java.awt.Color(0, 52, 81));
-        lblModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblModificar.setForeground(new java.awt.Color(0, 185, 249));
-        lblModificar.setText("Modificar");
-        lblModificar.setBorder(null);
-        lblModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBackground(new java.awt.Color(0, 52, 81));
+        btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(0, 185, 249));
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(null);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblModificarActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        pnlCCenter.add(lblModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, -1, -1));
+        pnlCCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, -1, -1));
 
         btnAvanzarPagina.setBackground(new java.awt.Color(0, 52, 81));
         btnAvanzarPagina.setForeground(new java.awt.Color(0, 185, 249));
@@ -305,17 +305,19 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void lbl_ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_ImprimirActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_ImprimirActionPerformed
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
-    private void lblAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblAniadirActionPerformed
+    private void btnAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAniadirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblAniadirActionPerformed
+        new CrearRegistro(conexion, administrador, this).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAniadirActionPerformed
 
-    private void lblModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblModificarActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblModificarActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnRegresarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPaginaActionPerformed
         // TODO add your handling code here:
@@ -340,7 +342,10 @@ public class Dashboard extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAniadir;
     private javax.swing.JButton btnAvanzarPagina;
+    private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnRegresarPagina;
     private javax.swing.JLabel correo;
@@ -348,12 +353,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton lblAniadir;
     private javax.swing.JLabel lblCorreo;
-    private javax.swing.JButton lblModificar;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lbl_Id;
-    private javax.swing.JButton lbl_Imprimir;
     private javax.swing.JLabel nombre;
     private javax.swing.JPanel pnlCBottom;
     private javax.swing.JPanel pnlCCenter;
