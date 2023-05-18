@@ -11,7 +11,7 @@ import org.itson.persistencia.ConexionMongoDB;
 
 /**
  *
- * @author yarvi
+ * @author Manu
  */
 public class Main {
 
