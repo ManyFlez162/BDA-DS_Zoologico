@@ -61,8 +61,41 @@ public class DetailRegistro extends javax.swing.JFrame {
         lblDuracion.setText(String.valueOf(itinerario.getDuracion()));
         lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
         lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
-        //////arreglar para actualizar las horas en el calendario
-        lblHoraSabado.setText(String.valueOf(itinerario.getHorarios()));
+
+        
+        List<Horario> horarios = itinerario.getHorarios();
+        for(Horario horario: horarios){
+            if(horario.getDia().equalsIgnoreCase("Lunes")){
+                lblHoraLunes.setText(horario.getHoraInicio().toString());
+            } else {
+                if(horario.getDia().equalsIgnoreCase("Martes")){
+                lblHoraMartes.setText(horario.getHoraInicio().toString());
+            } else {
+                    if(horario.getDia().equalsIgnoreCase("Miercoles")){
+                lblHoraMiercoles.setText(horario.getHoraInicio().toString());
+            } else {
+                        if(horario.getDia().equalsIgnoreCase("Jueves")){
+                lblHoraJueves.setText(horario.getHoraInicio().toString());
+            } else {
+                            if(horario.getDia().equalsIgnoreCase("Viernes")){
+                lblHoraViernes.setText(horario.getHoraInicio().toString());
+            } else {
+                                if(horario.getDia().equalsIgnoreCase("Sabado")){
+                lblHoraSabado.setText(horario.getHoraInicio().toString());
+            } else {
+                                    if(horario.getDia().equalsIgnoreCase("Domingo")){
+                lblHoraDomingo.setText(horario.getHoraInicio().toString());
+            }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+        
         
         
     }
@@ -154,6 +187,8 @@ public class DetailRegistro extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Itinerario:");
 
+        lblNombreItinerario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNombreItinerario.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreItinerario.setPreferredSize(new java.awt.Dimension(412, 48));
 
         javax.swing.GroupLayout pnlCTopLayout = new javax.swing.GroupLayout(pnlCTop);
@@ -290,27 +325,37 @@ public class DetailRegistro extends javax.swing.JFrame {
 
         lblHoraDomingo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblHoraDomingo.setForeground(new java.awt.Color(255, 255, 255));
-        lblHoraDomingo.setText("09:00");
+        lblHoraDomingo.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
 
         lblHoraSabado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblHoraSabado.setForeground(new java.awt.Color(255, 255, 255));
-        lblHoraSabado.setText("09:00");
+        lblHoraSabado.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(845, 130, -1, -1));
         pnlCCenter.add(lblCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
 
+        lblHoraLunes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraLunes.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraLunes.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraLunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, -1));
 
+        lblHoraMartes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraMartes.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraMartes.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, -1, -1));
 
+        lblHoraMiercoles.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraMiercoles.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraMiercoles.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, -1, -1));
 
+        lblHoraJueves.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraJueves.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraJueves.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
+        lblHoraViernes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraViernes.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraViernes.setPreferredSize(new java.awt.Dimension(35, 20));
         pnlCCenter.add(lblHoraViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
 

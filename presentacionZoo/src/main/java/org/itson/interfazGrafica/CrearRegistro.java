@@ -141,7 +141,9 @@ public class CrearRegistro extends javax.swing.JFrame {
 
                 horarioLunes.calcularHoraFin(duracionTotal);
                 
+                List<String> etiquetas = new ArrayList<>();
                 if(validadores.validarTiempo(duracionTotal)){
+                    String etiqueta = horarioLunes.getDia();
                      listaHorarios.add(horarioLunes); // Agregar el horario a la lista
                 } else {
                     JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
