@@ -11,10 +11,30 @@
             <version>3.1.1</version>
         </dependency>
         <dependency>
-    <groupId>org.netbeans.external</groupId>
-    <artifactId>AbsoluteLayout</artifactId>
-    <version>RELEASE170</version>
-</dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE170</version>
+        </dependency>
+        <dependency>
+            <groupId>org.itson.administradoritinerarioszoo</groupId>
+            <artifactId>administradorItinerariosZoo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.itson.accesodatoszoo</groupId>
+            <artifactId>accesoDatosZoo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.itson.objetosnegociozoo</groupId>
+            <artifactId>objetosNegocioZoo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.10.2</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

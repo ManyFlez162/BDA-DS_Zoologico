@@ -4,6 +4,7 @@
  */
 package org.itson.interfaces;
 
+import java.util.List;
 import org.itson.dominio.Itinerario;
 import org.itson.excepciones.PersistenciaException;
 
@@ -24,5 +25,9 @@ public interface IAdministradorItinerarios {
     public void modificacionItinerario(Itinerario itinerario);
     
     public Itinerario regresarItinerario(Itinerario itinerario);
+    
+    public List<Itinerario> regresarTodosItinerarios();
+    
+    public List<Itinerario> itinerariosPaginado(int pagina, int elementosPorPagina);
     
 }
