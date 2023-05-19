@@ -47,22 +47,18 @@ public class ModificarRegistro extends javax.swing.JFrame {
         this.itinerario = itinerario;
         this.listaId = new ArrayList<>();
         
-        
-        
-        
-        
-         btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
-         lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
-          lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
+        btnRegresar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_back_to_60px.png"));
+        lblMap.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/zoomap-zonas.png"));
+        lbl_ImagenRecorrido.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_sneaker_40px_1.png"));
         lblReloj.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_clock_40px.png"));
         lbl_ImagenParticipantes.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_User_Groups_40px.png"));
         btnGuardar.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_checked_checkbox_80px_1.png"));
         tbtnA.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_a_50px_1.png"));
-         tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px.png"));
-          tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
-           tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
-            tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
-            
+        tbtnB.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_b_50px.png"));
+        tbtnC.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_c_50px.png"));
+        tbtnD.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_d_50px.png"));
+        tbtnE.setIcon(new ImageIcon("src/main/java/org/itson/imagenes/icons8_e_50px.png"));
+
         txtfHoraInicioLunes.setEnabled(false);
         txtfHoraInicioMartes.setEnabled(false);
         txtfHoraInicioMiercoles.setEnabled(false);
@@ -70,74 +66,69 @@ public class ModificarRegistro extends javax.swing.JFrame {
         txtfHoraInicioViernes.setEnabled(false);
         txtfHoraInicioSabado.setEnabled(false);
         txtfHoraInicioDomingo.setEnabled(false);
-        
-        lblNombreRegistro.setText(itinerario.getNombre());
-        lblDuracion.setText(String.valueOf(itinerario.getDuracion()));
-        lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
-        lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
-        
-        
-        lblDuracion.setText("50");
-        lblLongitud.setText("100");
-        
+
+        lblNombreRegistro.setText(this.itinerario.getNombre());
+        lblDuracion.setText(String.valueOf(this.itinerario.getDuracion()));
+        lblParticipantes.setText(String.valueOf(this.itinerario.getCantidadPersonas()));
+        lblLongitud.setText(String.valueOf(this.itinerario.getLongitud()));
+
         List<Horario> horarios = itinerario.getHorarios();
-        for(Horario horario: horarios){
-            if(horario.getDia().equalsIgnoreCase("Lunes")){
+        for (Horario horario : horarios) {
+            if (horario.getDia().equalsIgnoreCase("Lunes")) {
                 txtfHoraInicioLunes.setText(horario.getHoraInicio().toString());
             } else {
-                if(horario.getDia().equalsIgnoreCase("Martes")){
-                txtfHoraInicioMartes.setText(horario.getHoraInicio().toString());
-            } else {
-                    if(horario.getDia().equalsIgnoreCase("Miercoles")){
-                txtfHoraInicioMiercoles.setText(horario.getHoraInicio().toString());
-            } else {
-                        if(horario.getDia().equalsIgnoreCase("Jueves")){
-                txtfHoraInicioJueves.setText(horario.getHoraInicio().toString());
-            } else {
-                            if(horario.getDia().equalsIgnoreCase("Viernes")){
-                txtfHoraInicioViernes.setText(horario.getHoraInicio().toString());
-            } else {
-                                if(horario.getDia().equalsIgnoreCase("Sabado")){
-                txtfHoraInicioSabado.setText(horario.getHoraInicio().toString());
-            } else {
-                                    if(horario.getDia().equalsIgnoreCase("Domingo")){
-                txtfHoraInicioDomingo.setText(horario.getHoraInicio().toString());
-            }
+                if (horario.getDia().equalsIgnoreCase("Martes")) {
+                    txtfHoraInicioMartes.setText(horario.getHoraInicio().toString());
+                } else {
+                    if (horario.getDia().equalsIgnoreCase("Miercoles")) {
+                        txtfHoraInicioMiercoles.setText(horario.getHoraInicio().toString());
+                    } else {
+                        if (horario.getDia().equalsIgnoreCase("Jueves")) {
+                            txtfHoraInicioJueves.setText(horario.getHoraInicio().toString());
+                        } else {
+                            if (horario.getDia().equalsIgnoreCase("Viernes")) {
+                                txtfHoraInicioViernes.setText(horario.getHoraInicio().toString());
+                            } else {
+                                if (horario.getDia().equalsIgnoreCase("Sabado")) {
+                                    txtfHoraInicioSabado.setText(horario.getHoraInicio().toString());
+                                } else {
+                                    if (horario.getDia().equalsIgnoreCase("Domingo")) {
+                                        txtfHoraInicioDomingo.setText(horario.getHoraInicio().toString());
+                                    }
                                 }
                             }
                         }
                     }
                 }
-                
-            }
-        }
-        
-        List<Habitat> habitats = administrador.obtenerHabitats();
-        
-        for(Habitat habitat: habitats){
-            if(habitat.getNombre().equalsIgnoreCase("Granja de animales")){
-                tbtnA.setSelected(true);
-            }
-            
-            if(habitat.getNombre().equalsIgnoreCase("Acuaticos")){
-                tbtnB.setSelected(true);
-            }
-            
-            if(habitat.getNombre().equalsIgnoreCase("Reptiles")){
-                tbtnC.setSelected(true);
-            }
-            
-            if(habitat.getNombre().equalsIgnoreCase("Aviarios")){
-                tbtnD.setSelected(true);
-            }
-            
-            if(habitat.getNombre().equalsIgnoreCase("Africanos")){
-                tbtnE.setSelected(true);
-            }
-            
-        }
-        
 
+            }
+        }
+        
+//        List<Habitat> habitats = administrador.obtenerHabitats();
+//        
+//        for(Habitat habitat: habitats){
+//            if(habitat.getNombre().equalsIgnoreCase("Granja de animales")){
+//                tbtnA.setSelected(true);
+//            }
+//            
+//            if(habitat.getNombre().equalsIgnoreCase("Acuaticos")){
+//                tbtnB.setSelected(true);
+//            }
+//            
+//            if(habitat.getNombre().equalsIgnoreCase("Reptiles")){
+//                tbtnC.setSelected(true);
+//            }
+//            
+//            if(habitat.getNombre().equalsIgnoreCase("Aviarios")){
+//                tbtnD.setSelected(true);
+//            }
+//            
+//            if(habitat.getNombre().equalsIgnoreCase("Africanos")){
+//                tbtnE.setSelected(true);
+//            }
+//            
+//        }
+        
     }
 
     /**
@@ -509,12 +500,10 @@ public class ModificarRegistro extends javax.swing.JFrame {
             return false;
         }
         
-        administrador.enviarItinerario(itinerario);
+        administrador.modificacionItinerario(itinerario);
         
         return true;
-        
-        
-     
+             
     }
     
     public boolean generaHorarios(){
@@ -535,14 +524,7 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioLunes.calcularHoraFin(duracionTotal);
                 
-              
-                if(validadores.validarTiempo(duracionTotal)){
                      listaHorarios.add(horarioLunes); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
 
                
             } else {
@@ -567,13 +549,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioMartes.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
                      listaHorarios.add(horarioMartes); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -596,13 +573,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioMiercoles.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
                      listaHorarios.add(horarioMiercoles); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -625,13 +597,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioJueves.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioJueves); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                listaHorarios.add(horarioJueves); // Agregar el horario a la lista
+                     
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -654,13 +621,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioViernes.calcularHoraFin(duracionTotal);
 
-                if(validadores.validarTiempo(duracionTotal)){
                      listaHorarios.add(horarioViernes); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                        "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -683,13 +645,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioSabado.calcularHoraFin(duracionTotal);
 
-               if(validadores.validarTiempo(duracionTotal)){
-                     listaHorarios.add(horarioSabado); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                }
+                listaHorarios.add(horarioSabado); // Agregar el horario a la lista
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);
@@ -712,13 +669,8 @@ public class ModificarRegistro extends javax.swing.JFrame {
 
                 horarioDomingo.calcularHoraFin(duracionTotal);
 
-               if(validadores.validarTiempo(duracionTotal)){
                      listaHorarios.add(horarioDomingo); // Agregar el horario a la lista
-                } else {
-                    JOptionPane.showMessageDialog(this, "La duración limite de un intinerario es de 90 mn..",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-                } 
+
             } else {
                 JOptionPane.showMessageDialog(this, "Verifica que el formato de hora sea correcto.",
                         "Error de formato de hora", JOptionPane.ERROR_MESSAGE);

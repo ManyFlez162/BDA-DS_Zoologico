@@ -103,6 +103,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         }
        
         itinerario.setIdHabitat(listaId);
+        
         if(!this.generaHorarios()){
             return false;
         }
