@@ -6,22 +6,28 @@ package org.itson.implementacion;
 
 import java.time.LocalTime;
 import java.util.List;
+import org.bson.types.ObjectId;
+import org.itson.dominio.Habitat;
 import org.itson.dominio.Horario;
 import org.itson.dominio.Itinerario;
 import org.itson.interfaces.IAdministradorItinerarios;
+import org.itson.interfaces.I_HabitatsDAO;
 import org.itson.interfaces.I_ItinerariosDAO;
 import org.itson.persistencia.ConexionMongoDB;
+import org.itson.persistencia.HabitatsDAO;
 import org.itson.persistencia.ItinerariosDAO;
 
 /**
  *
  * @author Manu
  */
-public class FachadaAdministradorItinerarios implements IAdministradorItinerarios{
+public class FachadaAdministradorItinerarios implements IAdministradorItinerarios {
     private I_ItinerariosDAO itinerariosDAO;
+    private I_HabitatsDAO habitatsDAO;
     
     public FachadaAdministradorItinerarios(ConexionMongoDB conexion){
         itinerariosDAO = new ItinerariosDAO(conexion);
+        habitatsDAO = new HabitatsDAO(conexion);
     }
 
     @Override
@@ -82,6 +88,7 @@ public class FachadaAdministradorItinerarios implements IAdministradorItinerario
         itinerariosDAO.modificarItinerario(itinerario.getNombre(), itinerario);
     }
 
+    @Override
     public Itinerario regresarItinerarioPorNombre(String nombreItinerario){
         return itinerariosDAO.buscarItinerario(nombreItinerario);
     }
@@ -99,6 +106,22 @@ public class FachadaAdministradorItinerarios implements IAdministradorItinerario
     @Override
     public List<Itinerario> itinerariosPaginado(int pagina, int elementosPorPagina) {
         return itinerariosDAO.itinerariosPaginado(pagina, elementosPorPagina);
+    }
+
+    @Override
+    public Habitat obtenerHabitatPorNombre(String nombre) {
+       return habitatsDAO.buscarHabitat(nombre);
+    }
+
+    @Override
+    public List<Habitat> obtenerHabitats() {
+        return habitatsDAO.obtenerHabitats();
+    }
+
+    @Override
+    public ObjectId obtenerIdHabitat(String nombre) {
+        ObjectId idHabitat = habitatsDAO.buscarHabitat(nombre).getId();
+        return idHabitat;
     }
     
     

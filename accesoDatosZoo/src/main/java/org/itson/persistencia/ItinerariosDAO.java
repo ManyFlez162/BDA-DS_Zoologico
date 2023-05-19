@@ -43,7 +43,7 @@ public class ItinerariosDAO implements I_ItinerariosDAO{
                 new Document("horarios", itinerarioModificado.getHorarios())
                             .append("duracion", itinerarioModificado.getDuracion())
                             .append("longitud", itinerarioModificado.getLongitud())
-                            .append("habitats", itinerarioModificado.getHabitats()));
+                            .append("idHabitat", itinerarioModificado.getIdHabitat()));
 
         coleccion.updateOne(filtro, update);
         return itinerarioModificado;

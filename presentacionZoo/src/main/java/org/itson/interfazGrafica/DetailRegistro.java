@@ -34,11 +34,6 @@ public class DetailRegistro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setResizable(false);
-        tbtnA.setEnabled(false);
-        tbtnB.setEnabled(false);
-        tbtnC.setEnabled(false);
-        tbtnD.setEnabled(false);
-        tbtnE.setEnabled(false);
         
         this.administrador = administrador;
         this.conexion = conexion;
@@ -63,6 +58,9 @@ public class DetailRegistro extends javax.swing.JFrame {
         lblDuracion.setText(String.valueOf(itinerario.getDuracion()));
         lblParticipantes.setText(String.valueOf(itinerario.getCantidadPersonas()));
         lblLongitud.setText(String.valueOf(itinerario.getLongitud()));
+        
+             lblDuracion.setText("50");
+        lblLongitud.setText("100");
         
         List<Horario> horarios = itinerario.getHorarios();
         for(Horario horario: horarios){
@@ -96,7 +94,7 @@ public class DetailRegistro extends javax.swing.JFrame {
             }
         }
         
-        List<Habitat> habitats = itinerario.getHabitats();
+        List<Habitat> habitats = administrador.obtenerHabitats();
         
         for(Habitat habitat: habitats){
             if(habitat.getNombre().equalsIgnoreCase("Granja de animales")){

@@ -4,11 +4,14 @@
  */
 package org.itson.dominio;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Manu
  */
 public class Habitat {
+    private ObjectId id;
     private String nombre;
     private int duracion;
     private int distancia;
@@ -20,6 +23,7 @@ public class Habitat {
         this.nombre = nombre;
         this.duracion = duracion;
         this.distancia = distancia;
+
     }
 
     public String getNombre() {
@@ -46,13 +50,19 @@ public class Habitat {
         this.distancia = distancia;
     }
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Habitat{" +
-                "nombre='" + nombre + '\'' +
-                ", duracion=" + duracion +
-                ", distancia=" + distancia +
-                '}';
+        return "Habitat{" + "id=" + id + ", nombre=" + nombre + ", duracion=" + duracion + ", distancia=" + distancia + '}';
     }
+
+   
     
 }

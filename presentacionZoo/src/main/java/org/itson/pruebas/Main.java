@@ -4,10 +4,14 @@
  */
 package org.itson.pruebas;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
+
+import java.util.List;
+import org.itson.dominio.Habitat;
+import org.itson.implementacion.FachadaAdministradorItinerarios;
+import org.itson.interfaces.IAdministradorItinerarios;
 import org.itson.interfazGrafica.Dashboard;
 import org.itson.persistencia.ConexionMongoDB;
+import org.itson.persistencia.HabitatsDAO;
 
 /**
  *
@@ -21,11 +25,39 @@ public class Main {
     public static void main(String[] args) {
         
         ConexionMongoDB conexion = new ConexionMongoDB();
+        cargarHabitats();
         new Dashboard(conexion).setVisible(true);
+         
+    }
+    
+    public static void cargarHabitats(){
+        
+        
+        
+        ConexionMongoDB conexion = new ConexionMongoDB();
+        HabitatsDAO habitatsDAO = new HabitatsDAO(conexion);
+        IAdministradorItinerarios administrador = new FachadaAdministradorItinerarios(conexion);
+        List<Habitat> habitats;
+        habitats = administrador.obtenerHabitats();
+         if(habitats.isEmpty()){
+             
+             Habitat habitat1 = new Habitat("Granja de animales", 25, 200);
+        Habitat habitat2 = new Habitat("Acuaticos", 25, 210);
+        Habitat habitat3 = new Habitat("Reptiles", 20, 100);
+        Habitat habitat4 = new Habitat("Aviarios", 25, 170);
+        Habitat habitat5 = new Habitat("Africanos", 35, 300);
+            
+             
+              habitatsDAO.agregarHabitat(habitat1);
+        habitatsDAO.agregarHabitat(habitat2);
+        habitatsDAO.agregarHabitat(habitat3);
+        habitatsDAO.agregarHabitat(habitat4);
+        habitatsDAO.agregarHabitat(habitat5);
+         }        
+        
+        
         
        
-        
-        
     }
     
 }

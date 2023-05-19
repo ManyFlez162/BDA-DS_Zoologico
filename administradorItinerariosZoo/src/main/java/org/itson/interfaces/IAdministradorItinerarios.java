@@ -5,6 +5,8 @@
 package org.itson.interfaces;
 
 import java.util.List;
+import org.bson.types.ObjectId;
+import org.itson.dominio.Habitat;
 import org.itson.dominio.Itinerario;
 import org.itson.excepciones.PersistenciaException;
 
@@ -27,6 +29,12 @@ public interface IAdministradorItinerarios {
     public Itinerario regresarItinerarioPorNombre(String nombreItinerario);
     
     public Itinerario regresarItinerario(Itinerario itinerario);
+    
+    public Habitat obtenerHabitatPorNombre(String nombre);
+    
+    public ObjectId obtenerIdHabitat(String nombre);
+    
+    public List<Habitat> obtenerHabitats();
     
     public List<Itinerario> regresarTodosItinerarios();
     

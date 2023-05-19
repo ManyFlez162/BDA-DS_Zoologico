@@ -5,6 +5,7 @@
 package org.itson.dominio;
 
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Itinerario {
     private int duracion;
     private int longitud;
     private int cantidadPersonas;
-    private List<Habitat> habitats;
+    private List<ObjectId> idHabitat;
 
     public Itinerario() {
     }
@@ -26,7 +27,6 @@ public class Itinerario {
         this.horarios = horarios;
         this.duracion = duracion;
         this.longitud = longitud;
-        this.habitats = habitats;
     }
 
     public String getNombre() {
@@ -61,14 +61,6 @@ public class Itinerario {
         this.longitud = longitud;
     }
 
-    public List<Habitat> getHabitats() {
-        return habitats;
-    }
-
-    public void setHabitats(List<Habitat> habitats) {
-        this.habitats = habitats;
-    }
-
     public void setCantidadPersonas(int personas){
         this.cantidadPersonas = personas;
     }
@@ -77,15 +69,20 @@ public class Itinerario {
         return cantidadPersonas;
     }
 
+    public List<ObjectId> getIdHabitat() {
+        return idHabitat;
+    }
+
+    public void setIdHabitat(List<ObjectId> idHabitat) {
+        this.idHabitat = idHabitat;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Itinerario{" +
-                "nombre='" + nombre + '\'' +
-                ", horarios=" + horarios +
-                ", duracion=" + duracion +
-                ", longitud=" + longitud +
-                ", habitats=" + habitats +
-                ", personas=" + cantidadPersonas +
-                '}';
+        return "Itinerario{" + "nombre=" + nombre + ", horarios=" + horarios + ", duracion=" + duracion + ", longitud=" + longitud + ", cantidadPersonas=" + cantidadPersonas + ", idHabitat=" + idHabitat + '}';
     }
+
+    
 }
